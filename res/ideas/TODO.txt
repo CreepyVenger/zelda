@@ -1,0 +1,16 @@
+DONE: Add a Type Tile Checker to have different movement on tiles (walk on grass and swim on water)
+
+Add a tuba object and we can go in water only if we have the tuba (hasTuba >0);
+display the objkects (Tuba and Key in the hand when we collected them)
+Continue the Slow Boots implementation
+
+Try to create a Waterdetection class (for swimming)
+Add time duration to speed boost (start time and end time)
+digonal movements
+debug simultaneous ZQSD controls
+day and night cycle 
+
+age the character (as the time passes, or number of steps, ...) and maybe you have to finish the game before the character dies or if he dies its a ghost displayed 
+entity eggs that spawns randmly any entity 
+an entity that follows Blue Boy everywhere  
+the frog can eat trees and it creates path cells
