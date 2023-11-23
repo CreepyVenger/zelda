@@ -53,9 +53,18 @@ public class TileManager {
         return null;
     }
 
+    /* public boolean isWaterTile(int x, int y) {
+        if (x >= 0 && x < gp.maxWorldCol && y >= 0 && y < gp.maxWorldRow) {
+            int tileNum = mapTileNum[x][y];
+            return tile[tileNum].isWater();
+        }
+        return false;
+    } */
+
     public void getTileImage() {
         System.out.println("Image loading started");
-        //PLACEHOLDERS
+
+        /* //PLACEHOLDERS
         setup(0, "grass00", false, false);
         setup(1, "grass00", false, false);
         setup(2, "grass00", false, true);
@@ -69,7 +78,8 @@ public class TileManager {
 
         //PLACEHOLDERS
         setup(10, "grass00", false, false);
-        
+        //setup(10, "image1x1", false, false);
+
         setup(11, "grass01", false, false);
         
         setup(12, "water00", false, true);
@@ -102,8 +112,53 @@ public class TileManager {
         setup(38, "road12", false, false);
         setup(39, "earth", false, false);
         setup(40, "wall", true, false);
-        setup(41, "tree3", true, false);
+        setup(41, "tree3", true, false); */
 
+        ////////////////////////////////////////
+
+        setup(10, "image1x1", false, false);
+
+        setup(11, "image3x17", false, false);
+
+        setup(12, "image1x2", false, true);
+        setup(13, "image1x3", false, true);
+        setup(14, "image3x7", false, true);
+        setup(15, "image4x7", false, true);
+        setup(16, "image5x7", false, false);
+        setup(17, "image3x8", false, true);
+        setup(18, "image5x8", false, false);
+        setup(19, "image3x9", false, false);
+        setup(20, "image4x9", false, false);
+        setup(21, "image5x9", false, false);
+        setup(22, "image3x10", false, true);
+        setup(23, "image4x10", false, true);
+        setup(24, "image3x11", false, true);
+        setup(25, "image4x11", false, true);
+        //PLACEHOLDERS
+        setup(26, "image2x5", false, false);
+        setup(27, "image1x7", false, false);
+        setup(28, "image2x6", false, false);
+        setup(29, "image2x7", false, false);
+        setup(30, "image3x5", false, false);
+        setup(31, "image1x5", false, false);
+        setup(32, "image1x8", false, false);
+        setup(33, "image2x4", false, false);
+        setup(34, "image2x8", false, false);
+        setup(35, "image1x4", false, false);
+        setup(36, "image3x4", false, false);
+        setup(37, "image1x6", false, false);
+        setup(38, "image3x6", false, false);
+        setup(39, "image2x33", false, false);
+        setup(40, "image6x17", false, false); //Up left corner
+        setup(41, "tree3", true, false); //Up left corner
+        /* setup(41, "image7x17", false, false); //Up right corner
+        setup(42, "image7x18", false, false); //bottom right corner
+        setup(43, "image7x18", false, false); //bottom left corner is 9x18
+        setup(44, "image8x19", false, false); //right
+        setup(45, "image6x20", false, false); //down
+        setup(46, "image7x19", false, false); //left
+        setup(47, "image6x19", false, false); //up */
+        //setup(48, "image6x19", true, false); //center
         
         System.out.println("Image loading finished");
     }

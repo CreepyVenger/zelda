@@ -3,15 +3,18 @@ package monster;
 import java.util.Random;
 import entity.Entity;
 import main.GamePanel;
+//import tile.Tile;
 //import main.UtilityTool;
+import tile.TileManager;
 
 public class MON_GreenSlime extends Entity{
-
+    
     GamePanel gp;
+    //private boolean onWater = false;
+    //TileManager tileManager;
 
-    public MON_GreenSlime(GamePanel gp) {
+    public MON_GreenSlime(GamePanel gp, TileManager tileManager) {
         super(gp);
-
         this.gp = gp;   
 
         type = 2;
@@ -19,6 +22,8 @@ public class MON_GreenSlime extends Entity{
         speed = 1;
         maxLife = 4;
         life = maxLife;
+        attack = 2;
+        defense = 0; //Player's default attack is 1 and if slime's defense is one os slime cannot take any damage
 
         solidArea.x = 3;
         solidArea.y = 18;
@@ -28,7 +33,10 @@ public class MON_GreenSlime extends Entity{
         solidAreaDedaultY = solidArea.y;
 
         getImage();
+
     }
+
+
     
     public void getImage() {
 
@@ -42,38 +50,46 @@ public class MON_GreenSlime extends Entity{
         right2 = setupground("/monster/greenslime_down_2",gp.tileSize, gp.tileSize);
 
 }
+ 
 
     public void setAction() {
 
-        actionLockCounter++;
+    actionLockCounter++;
 
-        if(actionLockCounter == 120) {
+    //if(TileManager.getTileImage(setup(a, b, false, true)));
+    if(actionLockCounter == 120) {
 
-            Random random = new Random();
-            int i  = random.nextInt(100)+1; //it will pick up a number from 0 to 100
-            
-            if(i <= 25) {
-                direction = "up";
-            }
-
-            if(i > 25 && i <= 50) {
-                direction = "down";
-            }
-
-            if(i > 50 && i <= 75) {
-                direction = "left";
-            }
-
-            if(i > 75 && i <= 100) {
-                direction = "right";        
-            }
-
-            actionLockCounter = 0;
+        Random random = new Random();
+        int i  = random.nextInt(100)+1; //it will pick up a number from 0 to 100
+        
+        if(i <= 25) {
+            direction = "up";
         }
 
-        ;
-        
+        if(i > 25 && i <= 50) {
+            direction = "down";
+        }
+
+        if(i > 50 && i <= 75) {
+            direction = "left";
+        }
+
+        if(i > 75 && i <= 100) {
+            direction = "right";        
+        }
+
+        actionLockCounter = 0;
     }
+
+    //;
+    
+}
+
+public void damageReaction(){
+
+    actionLockCounter = 0;
+    direction = gp.player.direction;
+}
 
 
 }

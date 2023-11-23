@@ -29,8 +29,39 @@ public class KeyHandler implements KeyListener {
 
         //TITLE STATE
         if(gp.gameState == gp.titleState) {
+            titleState(code);  
+        }
 
-            //FIRST TITLE SCREEN STATE
+        //PLAY STATE
+        else if(gp.gameState == gp.playState) {           
+            playState(code);
+        }
+
+        //PAUSE STATE
+        else if(gp.gameState == gp.pauseState) {
+            pausetate(code);         
+        }
+
+        //DEATH STATE
+        else if(gp.gameState == gp.deathState) {
+            deathState(code);             
+        }
+
+        //DIALOGUE STATE
+        else if(gp.gameState == gp.dialogueState) {
+            dialogueState(code);     
+        }
+
+        //CHARACTER STATE
+        else if(gp.gameState == gp.characterState) {            
+            characterState(code);   
+        }
+
+    }
+    
+    public void titleState(int code) {
+
+        //FIRST TITLE SCREEN STATE
             if(gp.ui.titleScreenState == 0) {
 
                 if (code == KeyEvent.VK_UP) {
@@ -202,13 +233,12 @@ public class KeyHandler implements KeyListener {
                     }
                 }
 
-            }   
-        }
-
-        //PLAY STATE
-        else if(gp.gameState == gp.playState) {
-            
-            if (code == KeyEvent.VK_Z) {
+            }
+    }
+    
+    public void playState(int code) {
+        
+        if (code == KeyEvent.VK_Z) {
                 System.out.println("up1");
                 upPressed = true;
                 System.out.println("up2");
@@ -226,6 +256,10 @@ public class KeyHandler implements KeyListener {
                 rightPressed = true;
             }
 
+            if (code == KeyEvent.VK_C) {
+                gp.gameState = gp.characterState;
+            }
+
             if (code == KeyEvent.VK_P) {
                 gp.gameState = gp.pauseState; //If we press P and if the Game is playing, then the state of the game becomes Pause
 
@@ -237,7 +271,7 @@ public class KeyHandler implements KeyListener {
                 } */
             }
 
-            if (e.getKeyCode() == KeyEvent.VK_M) {
+            if (code == KeyEvent.VK_M) {
                 if (firstPress) {
                     gp.stopMusic();
                     System.out.println("Stop Music");
@@ -272,40 +306,70 @@ public class KeyHandler implements KeyListener {
                 }
 
             }
+    }
 
-        }
-
-            //PAUSE STATE
-            else if(gp.gameState == gp.pauseState) {
-
-                if (code == KeyEvent.VK_P) {
+    public void pausetate(int code) {
+        
+        if (code == KeyEvent.VK_P) {
                     gp.gameState = gp.playState; //If we press P and if the Game is playing, then the state of the game becomes Pause
                 }
-                
-            }
+    }
 
-            //DEATH STATE
-            else if(gp.gameState == gp.deathState) {
-
-                if (code == KeyEvent.VK_ENTER) {
-                    gp.gameState = gp.playState; //If we press P and if the Game is playing, then the state of the game becomes Pause
-                }
-                
-            }
-
-            //DIALOGUE STATE
-            else if(gp.gameState == gp.dialogueState) {
-
-                if(code == KeyEvent.VK_ENTER) {
+    public void dialogueState(int code) {
+        
+        if(code == KeyEvent.VK_ENTER) {
                     gp.gameState = gp.playState;
                     //draw(ui.g2); WHY DID I WRITE THIS ??
                 }
+    }
 
-            }
+    public void characterState(int code) {
+        
+        if(code == KeyEvent.VK_C) {
+            gp.gameState = gp.playState;
         }
-    
-       
 
+        if(code == KeyEvent.VK_Z) {
+
+            if(gp.ui.slotRow != 0) {
+                gp.ui.slotRow--;
+                gp.playSE(9);
+            }
+            
+        }
+
+        if(code == KeyEvent.VK_Q) {
+            if(gp.ui.slotCol != 0) {
+                gp.ui.slotCol--;
+                gp.playSE(9);
+            }
+            
+        }
+
+        if(code == KeyEvent.VK_S) {
+            if(gp.ui.slotRow != 3) {
+                gp.ui.slotRow++;
+                gp.playSE(9);
+            }
+            
+        }
+
+        if(code == KeyEvent.VK_D) {
+            if(gp.ui.slotCol != 4) {
+                gp.ui.slotCol++;
+                gp.playSE(9);
+            }
+            
+        }
+
+    }
+ 
+    public void deathState(int code) {
+        
+        if (code == KeyEvent.VK_ENTER) {
+                    gp.gameState = gp.playState; //If we press P and if the Game is playing, then the state of the game becomes Pause
+                }
+    }
 
     @Override
     public void keyReleased(KeyEvent e) {

@@ -27,8 +27,8 @@ public class GamePanel extends JPanel implements Runnable {
     public  int tileSize = originalTileSize * scale; //48x48 tile 
     public  int maxScreenCol = 16;
     public  int maxScreenRow = 12;
-    public  int screenWidth = 786; // 786 pixels
-    public  int screenHeight = 576; // 576 pixels
+    public  int screenWidth = tileSize * maxScreenCol; // 786 pixels
+    public  int screenHeight = tileSize * maxScreenRow; // 576 pixels
 
     //WORLD SETTINGS
     public final int maxWorldCol = 50;
@@ -67,8 +67,8 @@ public class GamePanel extends JPanel implements Runnable {
     public int playState = 1; //we can choose any number
     public final int pauseState = 2; //we can choose any number
     public final int dialogueState = 3;
-    public final int deathState = 4;
-
+    public final int deathState = 5;
+    public final int characterState = 4;
     /* //Set player's default position 
     int playerX = 100;
     int playerY = 100;
@@ -210,7 +210,15 @@ public class GamePanel extends JPanel implements Runnable {
             //MONSTER
             for(int i = 0; i < monster.length; i++) {
                 if(monster[i] != null) {
-                    monster[i].update();
+
+                    if(monster[i].alive == true && monster[i].dying == false) {
+                        monster[i].update();
+                    }
+
+                    if(monster[i].alive == false) {
+                        monster[i] = null;
+                    }
+
                 }
             }
         }
