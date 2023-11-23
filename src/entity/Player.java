@@ -238,16 +238,23 @@ public class Player extends Entity {
 }
 
     public void getPlayerAttackImage() {
-        attackUp1 = setupground("/player/Attacking_sprites/boy_attack_up_1",gp.tileSize, gp.tileSize*2);
+        /* attackUp1 = setupground("/player/Attacking_sprites/boy_attack_up_1",gp.tileSize, gp.tileSize*2);
         attackUp2 = setupground("/player/Attacking_sprites/boy_attack_up_2",gp.tileSize, gp.tileSize*2);
-        //attackDown1 = setupground("/player/Attacking_sprites/boy_attack_down_1",gp.tileSize, gp.tileSize*2);
-        //attackDown2 = setupground("/player/Attacking_sprites/boy_attack_down_2",gp.tileSize, gp.tileSize*2);
-        attackDown1 = setupground("/player/Attacking_sprites/perry_attack_down_1",gp.tileSize*2, gp.tileSize*2);
-        attackDown2 = setupground("/player/Attacking_sprites/perry_attack_down_2",gp.tileSize, gp.tileSize*2);
+        attackDown1 = setupground("/player/Attacking_sprites/boy_attack_down_1",gp.tileSize, gp.tileSize*2);
+        attackDown2 = setupground("/player/Attacking_sprites/boy_attack_down_2",gp.tileSize, gp.tileSize*2);
         attackLeft1 = setupground("/player/Attacking_sprites/boy_attack_left_1",gp.tileSize*2, gp.tileSize);
         attackLeft2 = setupground("/player/Attacking_sprites/boy_attack_left_2",gp.tileSize*2, gp.tileSize);
         attackRight1 = setupground("/player/Attacking_sprites/boy_attack_right_1",gp.tileSize*2, gp.tileSize);
-        attackRight2 = setupground("/player/Attacking_sprites/boy_attack_right_2",gp.tileSize*2, gp.tileSize);
+        attackRight2 = setupground("/player/Attacking_sprites/boy_attack_right_2",gp.tileSize*2, gp.tileSize); */
+
+        attackUp1 = setupground("/player/Attacking_sprites/Perry_attack/perry_attack_up_1",gp.tileSize, gp.tileSize*2);
+        attackUp2 = setupground("/player/Attacking_sprites/Perry_attack/perry_attack_up_2",gp.tileSize, gp.tileSize*2);
+        attackDown1 = setupground("/player/Attacking_sprites/Perry_attack/perry_attack_down_1",gp.tileSize, gp.tileSize*2);
+        attackDown2 = setupground("/player/Attacking_sprites/Perry_attack/perry_attack_down_2",gp.tileSize, gp.tileSize*2);
+        attackLeft1 = setupground("/player/Attacking_sprites/Perry_attack/perry_attack_left_1",gp.tileSize*2, gp.tileSize);
+        attackLeft2 = setupground("/player/Attacking_sprites/Perry_attack/perry_attack_left_2",gp.tileSize*2, gp.tileSize);
+        attackRight1 = setupground("/player/Attacking_sprites/Perry_attack/perry_attack_right_1",gp.tileSize*2, gp.tileSize);
+        attackRight2 = setupground("/player/Attacking_sprites/Perry_attack/perry_attack_right_2",gp.tileSize*2, gp.tileSize);
 
     }
     
@@ -643,7 +650,7 @@ public class Player extends Entity {
                     if(attacking == true) {
                         //tempScreenY = screenY ;
                         
-                        if (spriteNum == 1) { image = attackDown1; tempScreenX = screenX - 24;} 
+                        if (spriteNum == 1) { image = attackDown1; tempScreenX = screenX;} 
                         //if (spriteNum == 2) { image = attackDown1; tempScreenX = screenX - 18; }
                         if (spriteNum == 2) { image = attackDown2; }
                     }
