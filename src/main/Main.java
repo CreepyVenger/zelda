@@ -4,6 +4,8 @@ import javax.swing.JFrame;
 
 //import java.awt.Dimension;
 
+// Salut
+
 public class Main {
     
     public static void main(String[] args) {
