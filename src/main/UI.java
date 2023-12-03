@@ -751,6 +751,13 @@ public class UI {
 
         for(int i = 0; i < gp.player.inventory.size(); i++) {
 
+            //EQUIP CURSOR
+            if(gp.player.inventory.get(i) == gp.player.currentWeapon || 
+               gp.player.inventory.get(i) == gp.player.currentShield) {
+
+                g2.setColor(new Color(240, 190, 90));
+                g2.fillRoundRect(slotX, slotY, gp.tileSize, gp.tileSize, 10, 10);;               }
+
             g2.drawImage(gp.player.inventory.get(i).down1, slotX, slotY, null);
 
             slotX += slotSize;
@@ -777,12 +784,12 @@ public class UI {
         //DESCRIPTION FRAME
         int dFrameX = frameX;
         int dFrameY = frameY + frameHeight;
-        int dFrameWidth = frameWidth;
+        int dFrameWidth = frameWidth + 2*gp.tileSize; //increase a little bit the right size of the window on two tiles size
         int dFrameHeight = gp.tileSize * 3;
 
-        drawSubWindow(dFrameX, dFrameY, dFrameWidth, dFrameHeight);
+        //drawSubWindow(dFrameX, dFrameY, dFrameWidth, dFrameHeight); //Moving this line from here to inside the if statement allows to not see the subwindow description when we are on a blank slot.
 
-        //DRAW DESCRIPTION
+        //DRAW DESCRIPTION TEXT
 
         int textX = dFrameX + 20;
         int textY = dFrameY + gp.tileSize;
@@ -791,6 +798,8 @@ public class UI {
         int itemIndex = getItemIndexOnSlot();
 
         if(itemIndex < gp.player.inventory.size()) {
+
+            drawSubWindow(dFrameX, dFrameY, dFrameWidth, dFrameHeight);
 
             for(String line: gp.player.inventory.get(itemIndex).description.split("\n")) {
                 

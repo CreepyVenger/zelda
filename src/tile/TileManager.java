@@ -27,7 +27,7 @@ public class TileManager {
 
         this.gp = gp;
 
-        tile = new Tile[50];
+        tile = new Tile[250];
         mapTileNum = new int[gp.maxWorldCol][gp.maxWorldRow];
 
         getTileImage();
@@ -149,15 +149,18 @@ public class TileManager {
         setup(37, "image1x6", false, false);
         setup(38, "image3x6", false, false);
         setup(39, "image2x33", false, false);
-        setup(40, "image6x17", false, false); //Up left corner
+        setup(40, "image6x17", false, false); //Up left corner //WALL
         setup(41, "tree3", true, false); //Up left corner
+        setup(42, "image3x33", false, false); //DIRT
+        setup(43, "rock", false, false);
+    
         /* setup(41, "image7x17", false, false); //Up right corner
         setup(42, "image7x18", false, false); //bottom right corner
         setup(43, "image7x18", false, false); //bottom left corner is 9x18
         setup(44, "image8x19", false, false); //right
         setup(45, "image6x20", false, false); //down
         setup(46, "image7x19", false, false); //left
-        setup(47, "image6x19", false, false); //up */
+        setup(47, "image6x19", false, false); //up */   
         //setup(48, "image6x19", true, false); //center
         
         System.out.println("Image loading finished");

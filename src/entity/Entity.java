@@ -14,7 +14,7 @@ import main.UtilityTool;
 
 public class Entity {
 
-    GamePanel gp; 
+    protected GamePanel gp; 
     
     /* public double speedOfSpeedBoots;
     public double speedofSlowBoots; */
@@ -52,14 +52,19 @@ public class Entity {
     public int standCounter = 0; //not usefull ?
 
     //CHARACTER ATTRIBUTES
-    public int type; //0 = Player, 1 = NPC, 2 = Monster
+    
     public String name;
     public double speed;
         public double speedGround; 
         public double speedWater; 
         public double speedBoots;
+
     public int maxLife;
     public int life;
+
+    public int maxMana;
+    public int mana;
+
     public int level;
     public int strength;
     public int dexterity;
@@ -70,11 +75,27 @@ public class Entity {
     public int coin;
     public Entity currentWeapon;
     public Entity currentShield;
+    public Projectile projectile;
+    
+    public int currentLevel = 1;
+    public int monsterAttackCounter = 0;
+    public int maxLevelPlayer = 4;
 
     //ITEM ATTRIBUTS
     public int attackValue;
     public int defenseValue;
     public String description = "";
+    public int useCost;
+
+    //TYPE
+    public int type; //0 = Player, 1 = NPC, 2 = Monster
+    public final int type_player = 0;
+    public final int type_npc = 1;
+    public final int type_monster = 2;
+    public final int type_sword = 3;
+    public final int type_axe = 4;
+    public final int type_shield = 5;
+    public final int type_consumable = 6;
 
     public boolean collision = false; //not usefull ?
 
@@ -106,31 +127,26 @@ public class Entity {
         dialogueIndexglobal++;
 
         switch(gp.player.direction) { //Switch or if statement
-            case "up":
-                direction = "down";
-                break;
-            
-            case "down":
-                direction = "up";
-                break;
-            
-            case "right":
-                direction = "left";
-                break;
-
-            case "left":
-                direction = "right";
-                break;
+            case "up": direction = "down"; break;
+            case "down": direction = "up"; break;        
+            case "right": direction = "left"; break;
+            case "left": direction = "right"; break;
         } 
 
         if(invincible == true) {
+
             invincibleCounter++;
-            if(invincibleCounter > 20) { //The damage method to the player when he hits a Green Slime gets called 60times/seconds (60frames per seconds or FPS)
+
+            if(invincibleCounter > 20) {//The damage method to the player when he hits a Green Slime gets called 60times/seconds (60frames per seconds or FPS)
+                
                 invincible = false;
                 invincibleCounter = 0;
             }
         }
     }
+
+    public void use(Entity entity) {} //We dont type anything in this method because we are going to override it in the Player class
+    
     public void update() {
 
         setAction();
@@ -142,7 +158,7 @@ public class Entity {
         gp.cChecker.checkEntity(this, gp.monster);
         boolean contactPlayer = gp.cChecker.checkPlayer(this);
 
-        if(this.type == 2 && contactPlayer == true) {
+        if(this.type == type_monster && contactPlayer == true) {
             if(gp.player.invincible == false) {
                 //We can give damage
                 gp.playSE(6);
@@ -283,7 +299,9 @@ public class Entity {
 
         if(dyingCounter > i*7 && dyingCounter <= i*8) {changeAlpha(g2, 1f);}
 
-        if(dyingCounter > i*8) {dying = false; alive = false;}
+        if(dyingCounter > i*8) {
+            //dying = false; Not usefull because the dying state will be set to false anyway when we create a new monster
+            alive = false;}
 
     }
 

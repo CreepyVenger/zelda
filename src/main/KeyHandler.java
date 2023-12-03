@@ -1,13 +1,14 @@
 package main;
 
+//import java.awt.RenderingHints.Key;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public class KeyHandler implements KeyListener {
 
-    public boolean upPressed, downPressed, leftPressed, rightPressed, enterPressed;
+    public boolean upPressed, downPressed, leftPressed, rightPressed, enterPressed, shiftSpeed, shotKeyPressed;
     //DEBUG
-    boolean checkDrawTime = false;
+    boolean showDebugText = false; //Previously checkDrawTime
     private boolean firstPress = true;
 
     GamePanel gp;
@@ -256,13 +257,24 @@ public class KeyHandler implements KeyListener {
                 rightPressed = true;
             }
 
+            if (code == KeyEvent.VK_ASTERISK) {
+                shotKeyPressed = true;
+            }
+
+            //SPEED SHIFT KEY
+            if(code == KeyEvent.VK_SHIFT) {   
+                shiftSpeed = true;         
+                gp.player.speedGround = 15;  
+                System.out.println("Shift speed!"); 
+            }
+
             if (code == KeyEvent.VK_C) {
                 gp.gameState = gp.characterState;
             }
 
             if (code == KeyEvent.VK_P) {
                 gp.gameState = gp.pauseState; //If we press P and if the Game is playing, then the state of the game becomes Pause
-
+                
                 /* if(gp.gameState == gp.playState) { 
                     gp.gameState = gp.pauseState; //If we press P and if the Game is playing, then the state of the game becomes Pause
                 }
@@ -295,17 +307,21 @@ public class KeyHandler implements KeyListener {
                 enterPressed = true;
             }
             
-
             //DEBUG
             if(code == KeyEvent.VK_T) {
-                if(checkDrawTime == false) {
-                    checkDrawTime = true;
+                if(showDebugText == false) {
+                    showDebugText = true;
                 }
-                else if(checkDrawTime == true) {
-                    checkDrawTime = false;
+                else if(showDebugText == true) {
+                    showDebugText = false;
                 }
 
             }
+
+             if(code == KeyEvent.VK_R) {
+                gp.tileM.loadMap("/maps/WorldV2.txt");
+                System.out.println("Map refreshed!");
+             }
     }
 
     public void pausetate(int code) {
@@ -329,7 +345,7 @@ public class KeyHandler implements KeyListener {
             gp.gameState = gp.playState;
         }
 
-        if(code == KeyEvent.VK_Z) {
+        if(code == KeyEvent.VK_UP) {
 
             if(gp.ui.slotRow != 0) {
                 gp.ui.slotRow--;
@@ -338,7 +354,7 @@ public class KeyHandler implements KeyListener {
             
         }
 
-        if(code == KeyEvent.VK_Q) {
+        if(code == KeyEvent.VK_LEFT) {
             if(gp.ui.slotCol != 0) {
                 gp.ui.slotCol--;
                 gp.playSE(9);
@@ -346,7 +362,7 @@ public class KeyHandler implements KeyListener {
             
         }
 
-        if(code == KeyEvent.VK_S) {
+        if(code == KeyEvent.VK_DOWN) {
             if(gp.ui.slotRow != 3) {
                 gp.ui.slotRow++;
                 gp.playSE(9);
@@ -354,13 +370,19 @@ public class KeyHandler implements KeyListener {
             
         }
 
-        if(code == KeyEvent.VK_D) {
+        if(code == KeyEvent.VK_RIGHT) {
             if(gp.ui.slotCol != 4) {
                 gp.ui.slotCol++;
                 gp.playSE(9);
             }
             
         }
+
+        if(code == KeyEvent.VK_ENTER) {
+            gp.player.selectItems();
+            System.out.println("ENTER");
+        }
+
 
     }
  
@@ -380,7 +402,7 @@ public class KeyHandler implements KeyListener {
             upPressed = false;
         }
 
-        if (code == KeyEvent.VK_Q) {
+        if (code == KeyEvent.VK_Q ) {
             leftPressed = false;
         }
 
@@ -391,6 +413,16 @@ public class KeyHandler implements KeyListener {
         if (code == KeyEvent.VK_D) {
             rightPressed = false;
         }
+
+        if (code == KeyEvent.VK_SHIFT) {
+            shiftSpeed = false;
+            gp.player.speedGround = gp.worldWidth / 600;
+            System.out.println("Shift speed! no "); 
+        }
+
+        if (code == KeyEvent.VK_ASTERISK) {
+                shotKeyPressed = false;
+            }
 
     }
 }

@@ -9,8 +9,12 @@ public class OBJ_Sword_Normal extends Entity {
         
         super(gp);
         //zTODO Auto-generated constructor stub
+
+        type = type_sword;
         name = "Normal Sword";
-        down1 = setupground("/objects/sword_normal", gp.tileSize, gp.tileSize);
+        attackArea.width = 30;
+        attackArea.height = 30;
+        down1 = setupground("/objects/sword_normal_2", gp.tileSize, gp.tileSize);
         attackValue = 1;
         description = "[" + name + "]\nAnd old Sword.";
     }

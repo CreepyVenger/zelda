@@ -143,6 +143,7 @@ public class EventHandler {
             gp.ui.currentDialogue = "You found the fountain of Youth.\nYour life has been fully restored!";
             gp.gameState = gameState;
             gp.player.life = gp.player.maxLife;
+            gp.aSetter.setMonster(); //The slimes respawn when you refill you life
 
         }
 

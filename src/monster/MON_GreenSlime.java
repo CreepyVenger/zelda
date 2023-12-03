@@ -2,6 +2,7 @@ package monster;
 
 import java.util.Random;
 import entity.Entity;
+//import entity.Player;
 import main.GamePanel;
 //import tile.Tile;
 //import main.UtilityTool;
@@ -17,13 +18,14 @@ public class MON_GreenSlime extends Entity{
         super(gp);
         this.gp = gp;   
 
-        type = 2;
+        type = type_monster;
         name = "Green Slime";
         speed = 1;
         maxLife = 4;
         life = maxLife;
-        attack = 2;
+        attack = 5;
         defense = 0; //Player's default attack is 1 and if slime's defense is one os slime cannot take any damage
+        exp = 2;
 
         solidArea.x = 3;
         solidArea.y = 18;
@@ -35,8 +37,6 @@ public class MON_GreenSlime extends Entity{
         getImage();
 
     }
-
-
     
     public void getImage() {
 
