@@ -16,7 +16,7 @@ import main.GamePanel;
 import main.KeyHandler;
 import monster.MON_GreenSlime;
 import object.OBJ_Fireball;
-import object.OBJ_Key;
+//import object.OBJ_Key;
 import object.OBJ_Shield_Wood;
 import object.OBJ_Sword_Normal;
 //import object.OBJ_Axe;
@@ -495,7 +495,15 @@ public class Player extends Entity {
             }
 
             gp.ui.addMessage(text);
-            gp.obj[i] = null;
+            
+
+            if(objectName == "Door"){
+                System.out.println("DOOOOR");
+                inventory.remove(gp.obj[i]);
+            }
+            else{
+                gp.obj[i] = null;
+            }
             
 
             switch(objectName) {
