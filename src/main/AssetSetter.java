@@ -5,6 +5,8 @@ import entity.NPC_Frog;
 import entity.NPC_OldMan;
 import monster.MON_GreenSlime;
 import monster.MON_Orc;
+import monster.MON_Bat;
+import monster.MON_RedSlime;
 import object.OBJ_Axe;
 //import object.OBJ_Boots;
 import object.OBJ_Chest;
@@ -175,8 +177,43 @@ public class AssetSetter {
         gp.monster[i].worldY = gp.tileSize*42;
         i++;
 
+        gp.monster[i] = new MON_RedSlime(gp, null);
+        gp.monster[i].worldX = gp.tileSize*40;
+        gp.monster[i].worldY = gp.tileSize*42;
+        i++;
+        
         gp.monster[i] = new MON_Orc(gp, null);
         gp.monster[i].worldX = gp.tileSize*10;
+        gp.monster[i].worldY = gp.tileSize*34;
+        i++;
+
+        gp.monster[i] = new MON_Orc(gp, null);
+        gp.monster[i].worldX = gp.tileSize*8;
+        gp.monster[i].worldY = gp.tileSize*34;
+        i++;
+
+        gp.monster[i] = new MON_Orc(gp, null);
+        gp.monster[i].worldX = gp.tileSize*6;
+        gp.monster[i].worldY = gp.tileSize*34;
+        i++;
+
+        gp.monster[i] = new MON_Orc(gp, null);
+        gp.monster[i].worldX = gp.tileSize*4;
+        gp.monster[i].worldY = gp.tileSize*34;
+        i++;
+
+        gp.monster[i] = new MON_Bat(gp, null);
+        gp.monster[i].worldX = gp.tileSize*12;
+        gp.monster[i].worldY = gp.tileSize*34;
+        i++;
+
+        gp.monster[i] = new MON_Bat(gp, null);
+        gp.monster[i].worldX = gp.tileSize*14;
+        gp.monster[i].worldY = gp.tileSize*34;
+        i++;
+
+        gp.monster[i] = new MON_Bat(gp, null);
+        gp.monster[i].worldX = gp.tileSize*16;
         gp.monster[i].worldY = gp.tileSize*34;
         i++;
 
