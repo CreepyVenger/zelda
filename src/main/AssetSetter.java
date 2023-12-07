@@ -4,6 +4,7 @@ import entity.NPC_Duck;
 import entity.NPC_Frog;
 import entity.NPC_OldMan;
 import monster.MON_GreenSlime;
+import monster.MON_Orc;
 import object.OBJ_Axe;
 //import object.OBJ_Boots;
 import object.OBJ_Chest;
@@ -172,6 +173,11 @@ public class AssetSetter {
         gp.monster[i] = new MON_GreenSlime(gp, null);
         gp.monster[i].worldX = gp.tileSize*38;
         gp.monster[i].worldY = gp.tileSize*42;
+        i++;
+
+        gp.monster[i] = new MON_Orc(gp, null);
+        gp.monster[i].worldX = gp.tileSize*10;
+        gp.monster[i].worldY = gp.tileSize*34;
         i++;
 
         /* //Green Slime in the tower to test collision 
