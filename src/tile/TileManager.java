@@ -120,20 +120,20 @@ public class TileManager {
 
         setup(11, "image3x17", false, false);
 
-        setup(12, "image1x2", false, true);
-        setup(13, "image1x3", false, true);
-        setup(14, "image3x7", false, true);
-        setup(15, "image4x7", false, true);
-        setup(16, "image5x7", false, false);
-        setup(17, "image3x8", false, true);
-        setup(18, "image5x8", false, false);
-        setup(19, "image3x9", false, false);
-        setup(20, "image4x9", false, false);
-        setup(21, "image5x9", false, false);
-        setup(22, "image3x10", false, true);
-        setup(23, "image4x10", false, true);
-        setup(24, "image3x11", false, true);
-        setup(25, "image4x11", false, true);
+        setup(12, "image1x2", true, true);
+        setup(13, "image1x3", true, true);
+        setup(14, "image3x7", true, true);
+        setup(15, "image4x7", true, true);
+        setup(16, "image5x7", true, false);
+        setup(17, "image3x8", true, false); //right water
+        setup(18, "image5x8", true, false);
+        setup(19, "image3x9", true, false);
+        setup(20, "image4x9", true, false);
+        setup(21, "image5x9", true, false);
+        setup(22, "image3x10", true, true);
+        setup(23, "image4x10", true, true);
+        setup(24, "image3x11", true, true);
+        setup(25, "image4x11", true, true);
         //PLACEHOLDERS
         setup(26, "image2x5", false, false);
         setup(27, "image1x7", false, false);
@@ -148,8 +148,8 @@ public class TileManager {
         setup(36, "image3x4", false, false);
         setup(37, "image1x6", false, false);
         setup(38, "image3x6", false, false);
-        setup(39, "image2x33", false, false);
-        setup(40, "image6x17", false, false); //Up left corner //WALL
+        setup(39, "earth", false, false);
+        setup(40, "wall", true, false); //Up left corner //WALL
         setup(41, "tree3", true, false); //Up left corner
         setup(42, "image3x33", false, false); //DIRT
         setup(43, "rock", false, false);

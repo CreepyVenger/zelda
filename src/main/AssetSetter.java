@@ -2,7 +2,8 @@ package main;
 
 import entity.NPC_Duck;
 import entity.NPC_Frog;
-import entity.NPC_OldMan;
+import entity.NPC_OldMan_1;
+import entity.NPC_OldMan_2;
 import monster.MON_GreenSlime;
 import object.OBJ_Axe;
 //import object.OBJ_Boots;
@@ -39,34 +40,48 @@ public class AssetSetter {
         gp.obj[1].worldY = gp.tileSize*25; */
 
         gp.obj[i] = new OBJ_Key(gp);
-        gp.obj[i].worldX = 23 * gp.tileSize;
-        gp.obj[i].worldY = 7 * gp.tileSize;
-        i++;
-
-        gp.obj[i] = new OBJ_Key(gp);
-        gp.obj[i].worldX = 23 * gp.tileSize;
-        gp.obj[i].worldY = 40 * gp.tileSize;
-        i++;
-
-        gp.obj[i] = new OBJ_Key(gp);
-        gp.obj[i].worldX = 38 * gp.tileSize;
-        gp.obj[i].worldY = 8 * gp.tileSize;
-        i++;
-
-        gp.obj[i] = new OBJ_Axe(gp);
-        gp.obj[i].worldX = 33 * gp.tileSize;
-        gp.obj[i].worldY = 21 * gp.tileSize;
-        i++;
-
-        gp.obj[i] = new OBJ_Shield_Blue(gp);
-        gp.obj[i].worldX = 35 * gp.tileSize;
-        gp.obj[i].worldY = 21 * gp.tileSize;
+        gp.obj[i].worldX = 31 * gp.tileSize;
+        gp.obj[i].worldY = 29 * gp.tileSize;
         i++;
 
         gp.obj[i] = new OBJ_Potion_Red(gp);
-        gp.obj[i].worldX = 23 * gp.tileSize;
-        gp.obj[i].worldY = 27 * gp.tileSize;
+        gp.obj[i].worldX = 28 * gp.tileSize;
+        gp.obj[i].worldY = 30 * gp.tileSize;
         i++;
+
+        //////////////////////  s
+
+        gp.obj[i] = new OBJ_Key(gp);
+        gp.obj[i].worldX = 19 * gp.tileSize;
+        gp.obj[i].worldY = 17 * gp.tileSize;
+        i++;
+
+        gp.obj[i] = new OBJ_Key(gp);
+        gp.obj[i].worldX = 18 * gp.tileSize;
+        gp.obj[i].worldY = 14 * gp.tileSize;
+        i++;
+        
+        gp.obj[i] = new OBJ_Key(gp);
+        gp.obj[i].worldX = 15 * gp.tileSize;
+        gp.obj[i].worldY = 11 * gp.tileSize;
+        i++;
+
+        //////////////////////
+
+        gp.obj[i] = new OBJ_Axe(gp);
+        gp.obj[i].worldX = 12 * gp.tileSize;
+        gp.obj[i].worldY = 32 * gp.tileSize;
+        i++;
+
+        gp.obj[i] = new OBJ_Shield_Blue(gp);
+        gp.obj[i].worldX = 10 * gp.tileSize;
+        gp.obj[i].worldY = 33 * gp.tileSize;
+        i++;
+
+
+
+
+        
 
 
         /* gp.obj[i] = new OBJ_Key(gp);
@@ -88,11 +103,6 @@ public class AssetSetter {
         gp.obj[i] = new OBJ_Door(gp);
         gp.obj[i].worldX = 10 * gp.tileSize;
         gp.obj[i].worldY = 12 * gp.tileSize;
-        i++;
-
-        gp.obj[i] = new OBJ_Door(gp);
-        gp.obj[i].worldX = 8 * gp.tileSize;
-        gp.obj[i].worldY = 28 * gp.tileSize;
         i++;
 
         gp.obj[i] = new OBJ_Door(gp);
@@ -121,34 +131,45 @@ public class AssetSetter {
 
     public void setNPC() {
 
-        gp.npc[0] = new NPC_OldMan(gp);
-        gp.npc[0].worldX = gp.tileSize*21;
-        gp.npc[0].worldY = gp.tileSize*21;
+        int i = 0;
+        gp.npc[i] = new NPC_OldMan_1(gp);
+        gp.npc[i].worldX = gp.tileSize*22;
+        gp.npc[i].worldY = gp.tileSize*21;
+        i++;
+        //////////////////////
+
+        gp.npc[i] = new NPC_OldMan_2(gp);
+        gp.npc[i].worldX = gp.tileSize*10;
+        gp.npc[i].worldY = gp.tileSize*30;
+        i++;
+
+        gp.npc[i] = new NPC_Duck(gp);
+        gp.npc[i].worldX = gp.tileSize*21; //22
+        gp.npc[i].worldY = gp.tileSize*21; //22
+        i++;
+
+        gp.npc[i] = new NPC_Duck(gp);
+        gp.npc[i].worldX = gp.tileSize*41; //22
+        gp.npc[i].worldY = gp.tileSize*21; //22
+        i++;
+    
 
 
+        gp.npc[i] = new NPC_Frog(gp);
+        gp.npc[i].worldX = gp.tileSize*22; //24
+        gp.npc[i].worldY = gp.tileSize*11; //21
+        i++;
 
-        gp.npc[1] = new NPC_Duck(gp);
-        gp.npc[1].worldX = gp.tileSize*11; //22
-        gp.npc[1].worldY = gp.tileSize*21; //22
-
-        gp.npc[2] = new NPC_Duck(gp);
-        gp.npc[2].worldX = gp.tileSize*31; //22
-        gp.npc[2].worldY = gp.tileSize*21; //22
-
-
-
-        gp.npc[3] = new NPC_Frog(gp);
-        gp.npc[3].worldX = gp.tileSize*22; //24
-        gp.npc[3].worldY = gp.tileSize*11; //21
-
-        gp.npc[4] = new NPC_Frog(gp);
-        gp.npc[4].worldX = gp.tileSize*22; //24
-        gp.npc[4].worldY = gp.tileSize*31; //21 
+        gp.npc[i] = new NPC_Frog(gp);
+        gp.npc[i].worldX = gp.tileSize*22; //24
+        gp.npc[i].worldY = gp.tileSize*31; //21 
+        i++;
 
         //OLD MAN IN THE TOWER
-        gp.npc[5] = new NPC_OldMan(gp);
-        gp.npc[5].worldX = gp.tileSize*9; //24
-        gp.npc[5].worldY = gp.tileSize*10; //21
+        gp.npc[i] = new NPC_OldMan_1(gp);
+        gp.npc[i].worldX = gp.tileSize*9; //24
+        gp.npc[i].worldY = gp.tileSize*10; //21
+        
     }
 
     public void setMonster() {
@@ -173,6 +194,8 @@ public class AssetSetter {
         gp.monster[i].worldX = gp.tileSize*38;
         gp.monster[i].worldY = gp.tileSize*42;
         i++;
+
+        
 
         /* //Green Slime in the tower to test collision 
         gp.monster[2] = new MON_GreenSlime(gp);

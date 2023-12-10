@@ -60,7 +60,12 @@ public class EventHandler {
             //if(hit(27,16,"right") == true) {/*Event Happens*/damagePit(27, 16, gp.dialogueState);}
 
             //if(hit(23,19,"any") == true) {/*Event Happens*/damagePit(27, 16, gp.dialogueState);}
-            if(hit(27,16,"right") == true) {/*Event Happens*/teleport(27,16,gp.dialogueState); damagePit(27, 16, gp.dialogueState);}
+            if(hit(27,16,"right") == true) {/*Event Happens*/teleport(27,16,gp.dialogueState); }//damagePit(27, 16, gp.dialogueState);
+            if(hit(38,41,"any") == true) {/*Event Happens*/teleport(29,28,gp.dialogueState);}
+
+            if(hit(32,27,"any") == true) {/*Event Happens*/teleportBack(32,27,gp.dialogueState);}
+
+
 
             if(hit(21,12,"up") == true) {/*Event Happens*/healingPool(21,12, gp.dialogueState);}
             if(hit(23,11,"up") == true) {/*Event Happens*/healingPool(23, 11, gp.dialogueState);}
@@ -107,10 +112,21 @@ public class EventHandler {
 
         gp.gameState = gameState;
         gp.ui.currentDialogue = "Teleportation";
-        gp.player.worldX = gp.tileSize*37;
-        gp.player.worldY = gp.tileSize*10;
+        gp.player.worldX = gp.tileSize*30;
+        gp.player.worldY = gp.tileSize*26;
 
     }
+
+    public void teleportBack(int col, int row, int gameState) {
+
+        gp.gameState = gameState;
+        gp.ui.currentDialogue = "Teleportation";
+        gp.player.worldX = gp.tileSize*24;
+        gp.player.worldY = gp.tileSize*26;
+
+    }
+
+
 
     public void damagePit(int col, int row, int gameState) {
 

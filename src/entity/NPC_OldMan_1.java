@@ -9,9 +9,9 @@ import javax.imageio.ImageIO; */
 import main.GamePanel;
 //import main.UtilityTool;
 
-public class NPC_OldMan extends Entity{
+public class NPC_OldMan_1 extends Entity{
 
-    public NPC_OldMan(GamePanel gp) {
+    public NPC_OldMan_1(GamePanel gp) {
         super(gp);
 
         direction = "down";

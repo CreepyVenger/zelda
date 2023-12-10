@@ -171,8 +171,23 @@ public class Player extends Entity {
         
     }
 
+    public void setDefaultPositions() {
+     
+        worldX = gp.tileSize * 23;
+        worldY = gp.tileSize * 21;
+        direction = "down";
+
+    }
+
+    public void restoreLife() {
+
+        life = maxLife;
+        invincible = false;
+    }
+
     public void setItems() {
 
+        inventory.clear();
         inventory.add(currentWeapon);
         inventory.add(currentShield);
         //inventory.add(new OBJ_Key(gp));
@@ -420,6 +435,16 @@ public class Player extends Entity {
                 invincibleCounter = 0;
             }
         }
+
+        if(life <= 0) {
+            gp.gameState = gp.gameOverState;
+            gp.playSE(12);
+        }
+
+        if(life > maxLife) {
+            life = maxLife;
+        }
+    
     }
     
     public void attacking() {
@@ -527,8 +552,17 @@ public class Player extends Entity {
 
                         if (gp.obj[i] == null) {
 
-                            gp.monster[0].worldX = gp.tileSize*11;
-                            gp.monster[0].worldY = gp.tileSize*8;
+                            i = 0;
+                            gp.monster[i].worldX = gp.tileSize*15;
+                            gp.monster[i].worldY = gp.tileSize*26;
+                            i++;
+
+                            gp.monster[i].worldX = gp.tileSize*12;
+                            gp.monster[i].worldY = gp.tileSize*25;
+                            i++;
+                            
+                            gp.monster[i].worldX = gp.tileSize*13;
+                            gp.monster[i].worldY = gp.tileSize*27;
                             System.out.println("A slime Spawned!");
 
                         }

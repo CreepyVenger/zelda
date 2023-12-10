@@ -43,11 +43,6 @@ public class KeyHandler implements KeyListener {
             pausetate(code);         
         }
 
-        //DEATH STATE
-        else if(gp.gameState == gp.deathState) {
-            deathState(code);             
-        }
-
         //DIALOGUE STATE
         else if(gp.gameState == gp.dialogueState) {
             dialogueState(code);     
@@ -57,6 +52,13 @@ public class KeyHandler implements KeyListener {
         else if(gp.gameState == gp.characterState) {            
             characterState(code);   
         }
+
+        //GAME OVER STATE
+        else if(gp.gameState == gp.gameOverState) {            
+            gameOverState(code);   
+        }
+
+
 
     }
     
@@ -152,7 +154,7 @@ public class KeyHandler implements KeyListener {
                 //SECOND SCREEN OF THE SECOND LINE (LOAD GAME) TO DO
             }
 
-            // SECOND/NEXT TITLE SCREEN STATE FOR THIRD LINE FIRST PAGE (SETTINGS)
+            // THIRD/NEXT TITLE SCREEN STATE FOR THIRD LINE FIRST PAGE (SETTINGS)
             else if(gp.ui.titleScreenState == 2) {
 
                 if (code == KeyEvent.VK_UP) {
@@ -327,8 +329,8 @@ public class KeyHandler implements KeyListener {
     public void pausetate(int code) {
         
         if (code == KeyEvent.VK_P) {
-                    gp.gameState = gp.playState; //If we press P and if the Game is playing, then the state of the game becomes Pause
-                }
+            gp.gameState = gp.playState; //If we press P and if the Game is playing, then the state of the game becomes Pause
+        }
     }
 
     public void dialogueState(int code) {
@@ -385,12 +387,40 @@ public class KeyHandler implements KeyListener {
 
 
     }
- 
-    public void deathState(int code) {
+
+    public void gameOverState(int code) {
+
+        if(code == KeyEvent.VK_UP) {
+            gp.ui.commandNum--;
+            if(gp.ui.commandNum < 0) {
+                gp.ui.commandNum = 1;
+            }
+            gp.playSE(9);
+        }
         
-        if (code == KeyEvent.VK_ENTER) {
-                    gp.gameState = gp.playState; //If we press P and if the Game is playing, then the state of the game becomes Pause
-                }
+
+        if(code == KeyEvent.VK_DOWN) {
+            gp.ui.commandNum++;
+            if(gp.ui.commandNum > 1) {
+                gp.ui.commandNum = 0;
+            }
+            gp.playSE(9);
+        }
+
+        if(code == KeyEvent.VK_ENTER) {
+            if(gp.ui.commandNum == 0) {
+                gp.gameState = gp.playState;
+                gp.retry();
+            }
+            
+            else if(gp.ui.commandNum == 1) {
+                gp.gameState = gp.titleState;
+                gp.ui.titleScreenState = 0;
+                gp.restart();
+            }
+        }
+        
+        
     }
 
     @Override

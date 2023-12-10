@@ -57,8 +57,8 @@ public class GamePanel extends JPanel implements Runnable {
     
     //ENTITY AND OBJECT 
     public Player player = new Player(this, keyH, tileM);
-    public Entity obj[] = new Entity[10]; //10 is the number of slots
-    public Entity npc[] = new Entity[10];
+    public Entity obj[] = new Entity[20]; //10 is the number of slots
+    public Entity npc[] = new Entity[20];
     public Entity monster[] = new Entity[20]; //Number of Monsters we can display at the same time.
     public ArrayList<Entity> projectileList = new ArrayList<>();
     ArrayList<Entity> entityList = new ArrayList<>();
@@ -66,11 +66,13 @@ public class GamePanel extends JPanel implements Runnable {
     //GAME STATE
     public int gameState;
     public final int titleState = 0;
-    public int playState = 1; //we can choose any number
+    public final int playState = 1; //we can choose any number
     public final int pauseState = 2; //we can choose any number
     public final int dialogueState = 3;
-    public final int deathState = 5;
     public final int characterState = 4;
+    public final int optionState = 5;
+    public final int gameOverState = 6;
+
     /* //Set player's default position 
     int playerX = 100;
     int playerY = 100;
@@ -122,6 +124,26 @@ public class GamePanel extends JPanel implements Runnable {
         gameState = titleState;
     } 
     
+    public void retry() {
+
+        player.setDefaultPositions();
+        player.restoreLife();
+        aSetter.setNPC();
+        aSetter.setMonster();
+    }
+
+    public void restart() {
+
+        player.setDefaultValues();
+        player.setDefaultPositions();
+        player.restoreLife();
+        player.setItems();
+        aSetter.setObject();
+        aSetter.setNPC();
+        aSetter.setMonster();
+
+    }
+
     public void startGameThread(){
 
         gameThread = new Thread(this);
@@ -246,11 +268,6 @@ public class GamePanel extends JPanel implements Runnable {
 
         if(gameState == pauseState) {
             //nothing, means nothing happens so player stop moving because he doesn't know what do do, we didn't tell him
-        }
-
-        if(player.life <= 0) {
-            gameState = deathState;    
-            
         }
 
         /* if(gameState == deathState && keyH.enterPressed == true) {
