@@ -2,15 +2,19 @@ package object;
 
 import entity.Entity;
 import main.GamePanel;
+import main.Inventory;
+import main.PickableItems;
 
-public class OBJ_Axe extends Entity {
+public class OBJ_Axe extends Entity implements PickableItems{
+
+    private String name;
 
     public OBJ_Axe(GamePanel gp) {
         super(gp);
         //zTODO Auto-generated constructor stub
 
         type = type_axe;
-        name = "Lumberjack's wooden axe";
+        this.name = "Lumberjack's wooden axe";
         down1 = setupground("/objects/iron_axe_2", gp.tileSize, gp.tileSize);
         attackValue = 2;
         attackArea.width = 30;
@@ -19,5 +23,13 @@ public class OBJ_Axe extends Entity {
         description = "[" + name + "]\nA bit rusty but still can cut \nsome trees..."; 
     }
 
-
+    public void pick(Inventory inventory){
+        inventory.pickitem(new OBJ_Axe(gp));
+    }
+    public void drop(Inventory inventory){
+        inventory.dropitem(this.name);
+    }
+    public String getname(){
+        return this.name;
+    }
 }

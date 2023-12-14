@@ -8,12 +8,14 @@ import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 //import java.io.IOException;
 
+import main.EmptyItem;
+
 //import javax.imageio.ImageIO;
 
-import java.util.ArrayList;
-
 import main.GamePanel;
+import main.Inventory;
 import main.KeyHandler;
+import main.PickableItems;
 import monster.MON_GreenSlime;
 import object.OBJ_Fireball;
 //import object.OBJ_Key;
@@ -44,8 +46,8 @@ public class Player extends Entity {
     //int standCounter = 0;
     //public boolean attackCanceled = false; I DON'T KNOW WHAT THESE 2 LINES ARE, TO VERIFY
 
-    public ArrayList<Entity> inventory = new ArrayList<>();
-    public final int maxInventorySize = 20;
+    public Inventory inventory = new Inventory(20);
+    
 
     public int hasKey = 0;
     int hasBoots = 0;
@@ -187,9 +189,8 @@ public class Player extends Entity {
 
     public void setItems() {
 
-        inventory.clear();
-        inventory.add(currentWeapon);
-        inventory.add(currentShield);
+        inventory.pickitem(currentWeapon);
+        inventory.pickitem(currentShield);
         //inventory.add(new OBJ_Key(gp));
         //inventory.add(new OBJ_Key(gp));
 
@@ -502,21 +503,21 @@ public class Player extends Entity {
         if (i != 999) {
 
             // COMMENT THIS TO AVOID CHESS HUNTING
-            String objectName = gp.obj[i].name;
+            String objectName = gp.obj[i].getname();
 
 
 
             String text;
 
-            if(inventory.size() != maxInventorySize) {
+            if(gp.obj[i] instanceof PickableItems){
 
-                inventory.add(gp.obj[i]);
+                inventory.pickitem(gp.obj[i]);
                 gp.playSE(1);
-                text = "Found a " + gp.obj[i].name + "!";
+                text = "Found a " + gp.obj[i].getname() + "!";
             }
 
             else{
-                text = "Your inventory is full!";
+                text = "This is not a pickable item";
             }
 
             gp.ui.addMessage(text);
@@ -524,7 +525,7 @@ public class Player extends Entity {
 
             if(objectName == "Door"){
                 System.out.println("DOOOOR");
-                inventory.remove(gp.obj[i]);
+                inventory.deleteItem("Key");
             }
             else{
                 gp.obj[i] = null;
@@ -535,7 +536,7 @@ public class Player extends Entity {
                 case "Key":
                     gp.playSE(1);
                     hasKey++;
-                    gp.obj[i] = null;
+                    gp.obj[i]=null;
                     //gp.ui.addMessage("you found a key!");
                     System.out.println("Key: " + hasKey);
                     break;  
@@ -570,10 +571,10 @@ public class Player extends Entity {
                     }
 
                     else{
-                        gp.ui.addMessage("You cannot open the door, look for a key!"); 
-                        //System.out.println("You cannot open the door, look for a key!");                             
+                        gp.ui.addMessage("You cannot open the door, look for a key!");
+                        //System.out.println("You cannot open the door, look for a key!");                         
                     }
-                    break;   
+                    break;
 
                 case "speedBoots":
                     gp.playSE(2);
@@ -748,9 +749,9 @@ public class Player extends Entity {
 
         int itemIndex = gp.ui.getItemIndexOnSlot();
 
-        if(itemIndex < inventory.size()) {
+        if(itemIndex < inventory.getInventory().size()) {
             
-            Entity selectedItem = inventory.get(itemIndex);
+            Entity selectedItem = inventory.getInventory().get(itemIndex);
 
             if(selectedItem.type == type_sword || selectedItem.type == type_axe ) {
 
@@ -768,7 +769,7 @@ public class Player extends Entity {
             if(selectedItem.type == type_consumable) {
 
                 selectedItem.use(this);
-                inventory.remove(itemIndex);
+                inventory.deleteItemIndex(itemIndex);
             }
         }
     }

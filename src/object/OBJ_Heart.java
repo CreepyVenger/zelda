@@ -3,7 +3,7 @@ package object;
 import entity.Entity;
 import main.GamePanel;
 
-public class OBJ_Heart extends Entity {
+public class OBJ_Heart extends Entity{
         
     public OBJ_Heart(GamePanel gp) {
 
@@ -15,6 +15,10 @@ public class OBJ_Heart extends Entity {
         image3 = setupground("/objects/heart_blank",gp.tileSize, gp.tileSize);
 
         //collision = true;
+    }
+    
+    public String getname(){
+        return this.name;
     }
 }
 

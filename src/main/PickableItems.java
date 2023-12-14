@@ -1,10 +1,8 @@
 package main;
 
-public class PickableItems {
+public interface PickableItems{
     
-    public PickableItems() { 
-        //a constructor is a method that has the exact same name as the class. 
-        //There can only be one constructor per class.
-
-    }
+    public void pick(Inventory inventory);
+    public void drop(Inventory inventory);
+    public String getname();
 }

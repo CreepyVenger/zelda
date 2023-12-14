@@ -2,10 +2,14 @@ package object;
 
 import entity.Entity;
 import main.GamePanel;
+import main.Inventory;
+import main.PickableItems;
 
 
-public class OBJ_Key extends Entity{
+public class OBJ_Key extends Entity implements PickableItems{
     
+    private String name;
+
     public OBJ_Key(GamePanel gp) {
 
         super(gp);
@@ -13,5 +17,15 @@ public class OBJ_Key extends Entity{
         name = "Key";
         down1 = setupground("/objects/key",gp.tileSize, gp.tileSize);
         description = "[" + name + "]\nIt opens a door...";
+    }
+
+    public void pick(Inventory inventory){
+        inventory.pickitem(new OBJ_Key(gp));
+    }
+    public void drop(Inventory inventory){
+        inventory.dropitem(this.name);
+    }
+    public String getname(){
+        return this.name;
     }
 }

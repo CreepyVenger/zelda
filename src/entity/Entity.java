@@ -104,7 +104,6 @@ public class Entity {
     //public boolean collisionOn;
 
 
-
     public Entity(GamePanel gp) {
         this.gp = gp;
     }
@@ -341,5 +340,8 @@ public class Entity {
         }
 
         return image;
+    }
+    public String getname(){
+        return this.name;
     }
 }
