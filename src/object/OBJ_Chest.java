@@ -22,4 +22,7 @@ public class OBJ_Chest extends Entity{
     public String getname(){
         return this.name;
     }
+    public Inventory getiInventory(){
+        return this.chestinventory;
+    }
 }

@@ -8,8 +8,6 @@ import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 //import java.io.IOException;
 
-import main.EmptyItem;
-
 //import javax.imageio.ImageIO;
 
 import main.GamePanel;
@@ -17,6 +15,8 @@ import main.Inventory;
 import main.KeyHandler;
 import main.PickableItems;
 import monster.MON_GreenSlime;
+import object.OBJ_Chest;
+import object.OBJ_Door;
 import object.OBJ_Fireball;
 //import object.OBJ_Key;
 import object.OBJ_Shield_Wood;
@@ -517,13 +517,18 @@ public class Player extends Entity {
             }
 
             else{
-                text = "This is not a pickable item";
+                if (gp.obj[i] instanceof OBJ_Door || gp.obj[i] instanceof OBJ_Chest){
+                    text = "";
+                }
+                else {
+                    text = "This is not a pickable item";
+                }
             }
 
             gp.ui.addMessage(text);
             
 
-            if(objectName == "Door"){
+            if(objectName == "Door" || objectName=="Door_Not_Spawnable"){
                 System.out.println("DOOOOR");
                 inventory.deleteItem("Key");
             }
@@ -547,34 +552,46 @@ public class Player extends Entity {
                         gp.playSE(3);
                         gp.obj[i] = null;
                         hasKey--;
-                        gp.ui.addMessage("You oppened a door!");
+                        gp.gameState = gp.dialogueState;
+                        gp.ui.currentDialogue = "You openned a door";
                         System.out.println("Door opened: " + numdoors);
                         System.out.println("Key: " + hasKey);
 
-                        if (gp.obj[i] == null) {
 
-                            i = 0;
-                            gp.monster[i].worldX = gp.tileSize*15;
-                            gp.monster[i].worldY = gp.tileSize*26;
-                            i++;
+                        i = 0;
+                        gp.monster[i].worldX = gp.tileSize*15;
+                        gp.monster[i].worldY = gp.tileSize*26;
+                        i++;
 
-                            gp.monster[i].worldX = gp.tileSize*12;
-                            gp.monster[i].worldY = gp.tileSize*25;
-                            i++;
-                            
-                            gp.monster[i].worldX = gp.tileSize*13;
-                            gp.monster[i].worldY = gp.tileSize*27;
-                            System.out.println("A slime Spawned!");
-
-                        }
+                        gp.monster[i].worldX = gp.tileSize*12;
+                        gp.monster[i].worldY = gp.tileSize*25;
+                        i++;
                         
+                        gp.monster[i].worldX = gp.tileSize*13;
+                        gp.monster[i].worldY = gp.tileSize*27;
+                        System.out.println("A slime Spawned!");
+                        break;
+                    }
+
+                    case "Door_Not_Spawnable":
+                    numdoors++;
+                    if (hasKey > 0) {
+                        gp.playSE(3);
+                        gp.obj[i] = null;
+                        hasKey--;
+                        gp.gameState = gp.dialogueState;
+                        gp.ui.currentDialogue = "You openned a door";
+                        System.out.println("Door opened: " + numdoors);
+                        System.out.println("Key: " + hasKey);
+                        break;
                     }
 
                     else{
-                        gp.ui.addMessage("You cannot open the door, look for a key!");
-                        //System.out.println("You cannot open the door, look for a key!");                         
+                        gp.gameState = gp.dialogueState;
+                        gp.ui.currentDialogue = "Find a key to open the door";
+                        //System.out.println("You cannot open the door, look for a key!");
+                        break;                         
                     }
-                    break;
 
                 case "speedBoots":
                     gp.playSE(2);

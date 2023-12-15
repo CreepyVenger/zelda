@@ -11,8 +11,7 @@ public class OBJ_Axe extends Entity implements PickableItems{
 
     public OBJ_Axe(GamePanel gp) {
         super(gp);
-        //zTODO Auto-generated constructor stub
-
+        
         type = type_axe;
         this.name = "Lumberjack's wooden axe";
         down1 = setupground("/objects/iron_axe_2", gp.tileSize, gp.tileSize);

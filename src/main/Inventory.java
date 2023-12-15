@@ -11,7 +11,7 @@ public class Inventory extends ArrayList<Entity>{
     
     public Inventory(Integer sizeinventory){
         for (Integer i=0;i<sizeinventory;i++){
-            this.inventory.add(new EmptyItem(this.gp)); 
+            this.inventory.add(new EmptyItem(this.gp));
             /* Make sure to have a method with the same name as the class (which inherits the "PickableObjects" class) "Empty" 
             to create an inventory filled with "null" slots. */ 
         }

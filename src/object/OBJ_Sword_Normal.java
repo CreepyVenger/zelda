@@ -32,4 +32,7 @@ public class OBJ_Sword_Normal extends Entity implements PickableItems{
     public String getname(){
         return this.name;
     }
+    public void attacking(Entity item){
+        
+    }
 }

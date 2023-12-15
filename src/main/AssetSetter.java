@@ -12,6 +12,7 @@ import object.OBJ_Axe;
 //import object.OBJ_Boots;
 import object.OBJ_Chest;
 import object.OBJ_Door;
+import object.OBJ_Door_Not_Spawnable;
 import object.OBJ_Key;
 import object.OBJ_Potion_Red;
 import object.OBJ_Shield_Blue;
@@ -103,7 +104,7 @@ public class AssetSetter {
 
 
         //TOWER DOOR
-        gp.obj[i] = new OBJ_Door(gp);
+        gp.obj[i] = new OBJ_Door_Not_Spawnable(gp);
         gp.obj[i].worldX = 10 * gp.tileSize;
         gp.obj[i].worldY = 12 * gp.tileSize;
         i++;
@@ -135,7 +136,7 @@ public class AssetSetter {
     public void setNPC() {
 
         int i = 0;
-        gp.npc[i] = new NPC_OldMan_1(gp);
+        /*gp.npc[i] = new NPC_OldMan_1(gp);
         gp.npc[i].worldX = gp.tileSize*22;
         gp.npc[i].worldY = gp.tileSize*21;
         i++;
@@ -149,9 +150,9 @@ public class AssetSetter {
         gp.npc[i] = new NPC_Duck(gp);
         gp.npc[i].worldX = gp.tileSize*21; //22
         gp.npc[i].worldY = gp.tileSize*21; //22
-        i++;
+        i++;*/
 
-        gp.npc[i] = new NPC_Duck(gp);
+        /*gp.npc[i] = new NPC_Duck(gp);
         gp.npc[i].worldX = gp.tileSize*41; //22
         gp.npc[i].worldY = gp.tileSize*21; //22
         i++;
@@ -166,7 +167,7 @@ public class AssetSetter {
         gp.npc[i] = new NPC_Frog(gp);
         gp.npc[i].worldX = gp.tileSize*22; //24
         gp.npc[i].worldY = gp.tileSize*31; //21 
-        i++;
+        i++;*/
 
         //OLD MAN IN THE TOWER
         gp.npc[i] = new NPC_OldMan_1(gp);

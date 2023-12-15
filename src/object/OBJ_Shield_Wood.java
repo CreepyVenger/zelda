@@ -28,5 +28,4 @@ public class OBJ_Shield_Wood extends Entity implements PickableItems{
     public String getname(){
         return this.name;
     }
-   
 }

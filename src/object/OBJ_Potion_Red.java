@@ -8,7 +8,6 @@ import main.PickableItems;
 public class OBJ_Potion_Red extends Entity implements PickableItems{
 
     private String name;
-    GamePanel gp;
     int value = 5;
 
     public OBJ_Potion_Red(GamePanel gp) {
