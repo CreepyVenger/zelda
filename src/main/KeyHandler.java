@@ -4,6 +4,8 @@ package main;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+import entity.Player;
+
 public class KeyHandler implements KeyListener {
 
     public boolean upPressed, downPressed, leftPressed, rightPressed, enterPressed, shiftSpeed, shotKeyPressed;
@@ -12,7 +14,6 @@ public class KeyHandler implements KeyListener {
     private boolean firstPress = true;
 
     GamePanel gp;
-
     public KeyHandler(GamePanel gp) {
         this.gp = gp;
 
@@ -242,9 +243,7 @@ public class KeyHandler implements KeyListener {
     public void playState(int code) {
         
         if (code == KeyEvent.VK_Z) {
-                System.out.println("up1");
                 upPressed = true;
-                System.out.println("up2");
             }
 
             if (code == KeyEvent.VK_Q) {
@@ -270,7 +269,7 @@ public class KeyHandler implements KeyListener {
                 System.out.println("Shift speed!"); 
             }
 
-            if (code == KeyEvent.VK_C) {
+            if (code == KeyEvent.VK_I) {
                 gp.gameState = gp.characterState;
             }
 
@@ -296,14 +295,20 @@ public class KeyHandler implements KeyListener {
                     firstPress = true;
                 }
             }
+
+            if (code==KeyEvent.VK_SPACE  && gp.player.collisionOn==true){
+                    gp.player.setblocked(true);
+                    System.out.println("blocked");
+            }
             
-            if (code == KeyEvent.VK_UP) {
+            // This is the code which sets up the arrow keys on the keyboard to zoom in or out. Disabled since code is "iffy".
+            /*if (code == KeyEvent.VK_UP) {
                 gp.zoomInOut(1);
             }
 
             if (code == KeyEvent.VK_DOWN) {
                 gp.zoomInOut(-1);
-            }
+            }*/
 
             if (code == KeyEvent.VK_ENTER) {
                 enterPressed = true;
@@ -343,11 +348,11 @@ public class KeyHandler implements KeyListener {
 
     public void characterState(int code) {
         
-        if(code == KeyEvent.VK_C) {
+        if(code == KeyEvent.VK_I) {
             gp.gameState = gp.playState;
         }
 
-        if(code == KeyEvent.VK_UP) {
+        if(code == KeyEvent.VK_Z) {
 
             if(gp.ui.slotRow != 0) {
                 gp.ui.slotRow--;
@@ -356,7 +361,7 @@ public class KeyHandler implements KeyListener {
             
         }
 
-        if(code == KeyEvent.VK_LEFT) {
+        if(code == KeyEvent.VK_Q) {
             if(gp.ui.slotCol != 0) {
                 gp.ui.slotCol--;
                 gp.playSE(9);
@@ -364,7 +369,7 @@ public class KeyHandler implements KeyListener {
             
         }
 
-        if(code == KeyEvent.VK_DOWN) {
+        if(code == KeyEvent.VK_S) {
             if(gp.ui.slotRow != 3) {
                 gp.ui.slotRow++;
                 gp.playSE(9);
@@ -372,7 +377,7 @@ public class KeyHandler implements KeyListener {
             
         }
 
-        if(code == KeyEvent.VK_RIGHT) {
+        if(code == KeyEvent.VK_D) {
             if(gp.ui.slotCol != 4) {
                 gp.ui.slotCol++;
                 gp.playSE(9);

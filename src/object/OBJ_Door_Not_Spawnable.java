@@ -12,7 +12,6 @@ public class OBJ_Door_Not_Spawnable extends OBJ_Door{
         this.name="Door_Not_Spawnable";
     }
 
-    public String getname() {
-        return this.name;
-    }
+    public String getname(){return this.name;}
+    public String getdescription(){return this.description;}
 }

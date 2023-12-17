@@ -1,11 +1,13 @@
 package object;
 
 import entity.Entity;
+import main.AttackItem;
+import main.CollisionChecker;
 import main.GamePanel;
 import main.Inventory;
 import main.PickableItems;
 
-public class OBJ_Axe extends Entity implements PickableItems{
+public class OBJ_Axe extends Entity implements PickableItems,AttackItem{
 
     private String name;
 
@@ -28,7 +30,9 @@ public class OBJ_Axe extends Entity implements PickableItems{
     public void drop(Inventory inventory){
         inventory.dropitem(this.name);
     }
-    public String getname(){
-        return this.name;
+    public String getname(){return this.name;}
+    public String getdescription(){return this.description;}
+    public void attacking(Entity caster,Entity target){
+        
     }
 }

@@ -17,9 +17,8 @@ public class OBJ_Heart extends Entity{
         //collision = true;
     }
     
-    public String getname(){
-        return this.name;
-    }
+    public String getname(){return this.name;}
+    public String getdescription(){return this.description;}
 }
 
 

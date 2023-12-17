@@ -88,7 +88,8 @@ public class GamePanel extends JPanel implements Runnable {
 
     }
 
-    public  void zoomInOut(int i) {
+    //Function designed to zoom in or out. It is abandoned for now since it does not work very well and is not necessary for the game.
+    /*public  void zoomInOut(int i) {
 
 
         int oldWorldWidth = tileSize * maxWorldCol; //2400 1200 = 0.5
@@ -112,7 +113,7 @@ public class GamePanel extends JPanel implements Runnable {
         player.worldY = (int) newPlayerWorldY ;
 
 
-    }
+    }*/
 
     public void setupGame() {
 

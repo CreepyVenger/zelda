@@ -25,7 +25,6 @@ public class OBJ_Key extends Entity implements PickableItems{
     public void drop(Inventory inventory){
         inventory.dropitem(this.name);
     }
-    public String getname(){
-        return this.name;
-    }
+    public String getname(){return this.name;}
+    public String getdescription(){return this.description;}
 }

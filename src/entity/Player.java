@@ -427,13 +427,15 @@ public class Player extends Entity {
             gp.playSE(10);
         }
 
+        //This is the blovkedCounter which allows to check if the player can counter again at the current time.
         //This need to be outside of key if statement!
         if(invincible == true) {
             invincibleCounter++;
 
-            if(invincibleCounter > 30) { //The damage method to the player when he hits a Green Slime gets called 60times/seconds (60frames per seconds or FPS)
+            if(invincibleCounter > 20) { //The damage method to the player when he hits a Green Slime gets called 60times/seconds (60frames per seconds or FPS)
                 invincible = false;
                 invincibleCounter = 0;
+                gp.player.setblocked(false);
             }
         }
 
@@ -445,7 +447,11 @@ public class Player extends Entity {
         if(life > maxLife) {
             life = maxLife;
         }
-    
+        
+        
+        if(gp.player.getblocked()==true){
+            gp.player.invincible=true;
+        }
     }
     
     public void attacking() {

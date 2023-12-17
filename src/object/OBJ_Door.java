@@ -26,7 +26,6 @@ public class OBJ_Door extends Entity{
         
     }
 
-    public String getname(){
-        return this.name;
-    }
+    public String getname(){return this.name;}
+    public String getdescription(){return this.description;}
 }

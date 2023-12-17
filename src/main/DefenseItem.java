@@ -3,5 +3,5 @@ package main;
 import entity.Entity;
 
 public interface DefenseItem {
-    public void defending(Entity caster,Entity victim);
+    public void blocking(Entity caster,Entity target);
 }

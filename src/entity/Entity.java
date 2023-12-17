@@ -4,6 +4,7 @@ import java.awt.AlphaComposite;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
+import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
@@ -102,6 +103,9 @@ public class Entity {
     //public boolean isSwmiming = false;
     //public boolean waterDetectionOn = false;
     //public boolean collisionOn;
+
+    //Private boolean for blocking (only for entities capable of blocking attacks)
+    private Boolean blocked=false;
 
 
     public Entity(GamePanel gp) {
@@ -341,7 +345,11 @@ public class Entity {
 
         return image;
     }
-    public String getname(){
-        return this.name;
-    }
+    
+    public String getname(){return this.name;}
+    public String getdescription(){return this.description;}
+    public void attacking(Entity caster,Entity victim){}
+    public void defending(Entity caster,Entity victim){}
+    public void setblocked(Boolean state){this.blocked=state;}
+    public Boolean getblocked(){return this.blocked;}
 }
