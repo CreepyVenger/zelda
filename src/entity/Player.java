@@ -221,23 +221,23 @@ public class Player extends Entity {
             e.printStackTrace();
         } */
 
-        up1 = setupground("/player/ground/boy_up_1",gp.tileSize, gp.tileSize);
+        /* up1 = setupground("/player/ground/boy_up_1",gp.tileSize, gp.tileSize);
         up2 = setupground("/player/ground/boy_up_2",gp.tileSize, gp.tileSize);
         down1 = setupground("/player/ground/boy_down_1",gp.tileSize, gp.tileSize);
         down2 = setupground("/player/ground/boy_down_2",gp.tileSize, gp.tileSize);
         left1 = setupground("/player/ground/boy_left_1",gp.tileSize, gp.tileSize);
         left2 = setupground("/player/ground/boy_left_2",gp.tileSize, gp.tileSize);
         right1 = setupground("/player/ground/boy_right_1",gp.tileSize, gp.tileSize);
-        right2 = setupground("/player/ground/boy_right_2",gp.tileSize, gp.tileSize);
+        right2 = setupground("/player/ground/boy_right_2",gp.tileSize, gp.tileSize); */
 
-        /* up1 = setupground("/player/Perry_ground/Perry_up_1", gp.tileSize, gp.tileSize);
+        up1 = setupground("/player/Perry_ground/Perry_up_1", gp.tileSize, gp.tileSize);
         up2 = setupground("/player/Perry_ground/Perry_up_2",gp.tileSize, gp.tileSize);
         down1 = setupground("/player/Perry_ground/Perry_down_1",gp.tileSize, gp.tileSize);
         down2 = setupground("/player/Perry_ground/Perry_down_2",gp.tileSize, gp.tileSize);
         left1 = setupground("/player/Perry_ground/Perry_left_1",gp.tileSize, gp.tileSize);
         left2 = setupground("/player/Perry_ground/Perry_left_2",gp.tileSize, gp.tileSize);
         right1 = setupground("/player/Perry_ground/Perry_right_1",gp.tileSize, gp.tileSize);
-        right2 = setupground("/player/Perry_ground/Perry_right_2",gp.tileSize, gp.tileSize); */
+        right2 = setupground("/player/Perry_ground/Perry_right_2",gp.tileSize, gp.tileSize);
 
     }
 
@@ -267,25 +267,25 @@ public class Player extends Entity {
     public void getPlayerAttackImage() {
 
         if(currentWeapon.type == type_sword) {
-            attackUp1 = setupground("/player/Attacking_sprites/boy_attack_up_1",gp.tileSize, gp.tileSize*2);
-            attackUp2 = setupground("/player/Attacking_sprites/boy_attack_up_2",gp.tileSize, gp.tileSize*2);
-            attackDown1 = setupground("/player/Attacking_sprites/attack1",gp.tileSize*2, gp.tileSize*2);
-            attackDown2 = setupground("/player/Attacking_sprites/boy_attack_down_2",gp.tileSize, gp.tileSize*2);
-            attackLeft1 = setupground("/player/Attacking_sprites/boy_attack_left_1",gp.tileSize*2, gp.tileSize);
-            attackLeft2 = setupground("/player/Attacking_sprites/boy_attack_left_2",gp.tileSize*2, gp.tileSize);
-            attackRight1 = setupground("/player/Attacking_sprites/boy_attack_right_1",gp.tileSize*2, gp.tileSize);
-            attackRight2 = setupground("/player/Attacking_sprites/boy_attack_right_2",gp.tileSize*2, gp.tileSize);
+            attackUp1 = setupground("/player/Attacking_sprites/Perry_attack/perry_attack_up_1",gp.tileSize, gp.tileSize*2);
+            attackUp2 = setupground("/player/Attacking_sprites/Perry_attack/perry_attack_up_2",gp.tileSize, gp.tileSize*2);
+            attackDown1 = setupground("/player/Attacking_sprites/Perry_attack/perry_attack_down_1",gp.tileSize*2, gp.tileSize*2);
+            attackDown2 = setupground("/player/Attacking_sprites/Perry_attack/perry_attack_down_2",gp.tileSize, gp.tileSize*2);
+            attackLeft1 = setupground("/player/Attacking_sprites/Perry_attack/perry_attack_left_1",gp.tileSize*2, gp.tileSize);
+            attackLeft2 = setupground("/player/Attacking_sprites/Perry_attack/perry_attack_left_2",gp.tileSize*2, gp.tileSize);
+            attackRight1 = setupground("/player/Attacking_sprites/Perry_attack/perry_attack_right_1",gp.tileSize*2, gp.tileSize);
+            attackRight2 = setupground("/player/Attacking_sprites/Perry_attack/perry_attack_right_2",gp.tileSize*2, gp.tileSize);
         }
 
         if(currentWeapon.type == type_axe) {
-            attackUp1 = setupground("/player/Attacking_sprites/boy_axe_up_1",gp.tileSize, gp.tileSize*2);
-            attackUp2 = setupground("/player/Attacking_sprites/boy_axe_up_2",gp.tileSize, gp.tileSize*2);
-            attackDown1 = setupground("/player/Attacking_sprites/axe1",gp.tileSize*2, gp.tileSize*2);
-            attackDown2 = setupground("/player/Attacking_sprites/boy_axe_down_2",gp.tileSize, gp.tileSize*2);
-            attackLeft1 = setupground("/player/Attacking_sprites/boy_axe_left_1",gp.tileSize*2, gp.tileSize);
-            attackLeft2 = setupground("/player/Attacking_sprites/boy_axe_left_2",gp.tileSize*2, gp.tileSize);
-            attackRight1 = setupground("/player/Attacking_sprites/boy_axe_right_1",gp.tileSize*2, gp.tileSize);
-            attackRight2 = setupground("/player/Attacking_sprites/boy_axe_right_2",gp.tileSize*2, gp.tileSize);
+            attackUp1 = setupground("/player/Attacking_sprites/perry_axe_up_1",gp.tileSize, gp.tileSize*2);
+            attackUp2 = setupground("/player/Attacking_sprites/perry_axe_up_2",gp.tileSize, gp.tileSize*2);
+            attackDown1 = setupground("/player/Attacking_sprites/perry_axe_down_1",gp.tileSize*2, gp.tileSize*2);
+            attackDown2 = setupground("/player/Attacking_sprites/perry_axe_down_2",gp.tileSize, gp.tileSize*2);
+            attackLeft1 = setupground("/player/Attacking_sprites/perry_axe_left_1",gp.tileSize*2, gp.tileSize);
+            attackLeft2 = setupground("/player/Attacking_sprites/perry_axe_left_2",gp.tileSize*2, gp.tileSize);
+            attackRight1 = setupground("/player/Attacking_sprites/perry_axe_right_1",gp.tileSize*2, gp.tileSize);
+            attackRight2 = setupground("/player/Attacking_sprites/perry_axe_right_2",gp.tileSize*2, gp.tileSize);
         }
 
 
@@ -885,7 +885,7 @@ public class Player extends Entity {
                     if(attacking == true) {
                         //tempScreenY = screenY ;
                         
-                        if (spriteNum == 1) { image = attackDown1; tempScreenX = screenX -18;} 
+                        if (spriteNum == 1) { image = attackDown1; tempScreenX = screenX -24;} //-18
                         //if (spriteNum == 2) { image = attackDown1; tempScreenX = screeqnX - 18; }
                         if (spriteNum == 2) { image = attackDown2; }
                     }
