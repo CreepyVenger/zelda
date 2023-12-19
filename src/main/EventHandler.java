@@ -65,6 +65,9 @@ public class EventHandler {
 
             if(hit(32,27,"any") == true) {/*Event Happens*/teleportBack(32,27,gp.dialogueState);}
 
+            if(hit(17,14,"any") == true) {/*Event Happens*/teleportBack(24,26,gp.dialogueState);} //Second Key
+            if(hit(18,17,"any") == true) {/*Event Happens*/teleportBack(24,26,gp.dialogueState);} //Third Key
+
 
 
             if(hit(21,12,"up") == true) {/*Event Happens*/healingPool(21,12, gp.dialogueState);}
@@ -112,8 +115,8 @@ public class EventHandler {
 
         gp.gameState = gameState;
         gp.ui.currentDialogue = "Teleportation";
-        gp.player.worldX = gp.tileSize*30;
-        gp.player.worldY = gp.tileSize*26;
+        gp.player.worldX = gp.tileSize*30; //30
+        gp.player.worldY = gp.tileSize*26; //26
 
     }
 
@@ -121,8 +124,8 @@ public class EventHandler {
 
         gp.gameState = gameState;
         gp.ui.currentDialogue = "Teleportation";
-        gp.player.worldX = gp.tileSize*24;
-        gp.player.worldY = gp.tileSize*26;
+        gp.player.worldX = gp.tileSize*24; //24
+        gp.player.worldY = gp.tileSize*26; //26
 
     }
 
