@@ -10,7 +10,6 @@ import main.PickableItems;
 public class OBJ_Shield_Wood extends Entity implements PickableItems,DefenseItem{
 
     private String name;
-    private Integer InvinciBlockTime;
 
     public OBJ_Shield_Wood(GamePanel gp) {
         
@@ -21,7 +20,6 @@ public class OBJ_Shield_Wood extends Entity implements PickableItems,DefenseItem
         down1 = setupground("/objects/shield_wood_2", gp.tileSize, gp.tileSize);
         defenseValue = 1;
         description = "[" + name + "]\nMade of wood.";
-        this.InvinciBlockTime=5; //this is the amount of frames that you become invincible when you make a perfect block.
     }
 
     public void pick(Inventory inventory){
@@ -32,12 +30,5 @@ public class OBJ_Shield_Wood extends Entity implements PickableItems,DefenseItem
     }
     public String getname(){return this.name;}
     public String getdescription(){return this.description;}
-    public void blocking(Entity caster,Entity target){
-        if (target.getblocked()==true && target.collisionOn==true){
-            for (int i=0;i<this.InvinciBlockTime;i++){
-                target.invincible=true;
-            }
-            target.invincible=false;
-        }
-    }
+    public void blocking(Entity caster,Entity target){}
 }

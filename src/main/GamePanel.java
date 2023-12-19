@@ -126,11 +126,9 @@ public class GamePanel extends JPanel implements Runnable {
     } 
     
     public void retry() {
-
-        player.setDefaultPositions();
-        player.restoreLife();
-        aSetter.setNPC();
-        aSetter.setMonster();
+        player.inventory.deleteAllItems();
+        gameState = titleState;
+        restart();
     }
 
     public void restart() {
@@ -138,7 +136,6 @@ public class GamePanel extends JPanel implements Runnable {
         player.setDefaultValues();
         player.setDefaultPositions();
         player.restoreLife();
-        player.setItems();
         aSetter.setObject();
         aSetter.setNPC();
         aSetter.setMonster();
@@ -391,7 +388,7 @@ public class GamePanel extends JPanel implements Runnable {
 
     }
 
-    public  void playMusic(int i) {
+    public void playMusic(int i) {
 
         music.setFile(i);
         music.play();

@@ -4,7 +4,7 @@ package main;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-import entity.Player;
+import entity.Entity;
 
 public class KeyHandler implements KeyListener {
 
@@ -68,14 +68,14 @@ public class KeyHandler implements KeyListener {
         //FIRST TITLE SCREEN STATE
             if(gp.ui.titleScreenState == 0) {
 
-                if (code == KeyEvent.VK_UP) {
+                if (code == KeyEvent.VK_Z) {
                     gp.ui.commandNum--;
                     if(gp.ui.commandNum < 0) {
                         gp.ui.commandNum = 3;
                     }
                 }
 
-                if (code == KeyEvent.VK_DOWN) {
+                if (code == KeyEvent.VK_S) {
                     gp.ui.commandNum++;
                     if(gp.ui.commandNum > 3) {
                         gp.ui.commandNum = 0;
@@ -110,14 +110,14 @@ public class KeyHandler implements KeyListener {
             // SECOND/NEXT TITLE SCREEN STATE FOR FIRST LINE FIRST PAGE
             else if(gp.ui.titleScreenState == 1) {
 
-                if (code == KeyEvent.VK_UP) {
+                if (code == KeyEvent.VK_Z) {
                     gp.ui.commandNum--;
                     if(gp.ui.commandNum < 0) {
                         gp.ui.commandNum = 3;
                     }
                 }
 
-                if (code == KeyEvent.VK_DOWN) {
+                if (code == KeyEvent.VK_S) {
                     gp.ui.commandNum++;
                     if(gp.ui.commandNum > 3) {
                         gp.ui.commandNum = 0;
@@ -129,25 +129,34 @@ public class KeyHandler implements KeyListener {
                     if(gp.ui.commandNum == 0) { //IF FIRST LINE AND ENTER, WE PLAY THE FIGHTER
                         System.out.println("Do some fighter specific stuff!");
                         gp.gameState = gp.playState;
+                        gp.player.setItemsFighter();
+                        gp.player.getAttack();
+                        gp.player.getDefense();
                         gp.playMusic(0);
                     }
 
                     if(gp.ui.commandNum == 1) { //IF SECOND LINE AND ENTER, WE PLAY THE THIEF
                         System.out.println("Do some thief specific stuff!");
                         gp.gameState = gp.playState;
+                        gp.player.setItemsThief();
+                        gp.player.getAttack();
+                        gp.player.getDefense();
                         gp.playMusic(0);
                     }
 
                     if(gp.ui.commandNum == 2) { //IF THIRD LINE AND ENTER, WE PLAY THE WITCHER
                         System.out.println("Do some witcher specific stuff!");
+
                         gp.gameState = gp.playState;
+                        gp.player.setItemsWizard();
+                        gp.player.getAttack();
+                        gp.player.getDefense();
                         gp.playMusic(0);
                     }
 
                     if(gp.ui.commandNum == 3) { //IF FOURTH LINE AND ENTER, WE GO BACK
                         gp.ui.titleScreenState = 0; // WE GO BACK PUTTING THE TITLE SCREEN STATE TO THE FIRST STATE, THE the 0th
-                    }  
-
+                    }
                 } 
             }
 
@@ -158,21 +167,21 @@ public class KeyHandler implements KeyListener {
             // THIRD/NEXT TITLE SCREEN STATE FOR THIRD LINE FIRST PAGE (SETTINGS)
             else if(gp.ui.titleScreenState == 2) {
 
-                if (code == KeyEvent.VK_UP) {
+                if (code == KeyEvent.VK_Z) {
                     gp.ui.commandNum--;
                     if(gp.ui.commandNum < 0) {
                         gp.ui.commandNum = 3;
                     }
                 }
 
-                if (code == KeyEvent.VK_DOWN) {
+                if (code == KeyEvent.VK_S) {
                     gp.ui.commandNum++;
                     if(gp.ui.commandNum > 3) {
                         gp.ui.commandNum = 0;
                     }
                 }
 
-                if (code == KeyEvent.VK_LEFT) {
+                if (code == KeyEvent.VK_Q) {
                     gp.ui.commandNumLat--;
                     if(gp.ui.commandNumLat == 0) {
                         System.out.println("Sound Off");
@@ -180,7 +189,7 @@ public class KeyHandler implements KeyListener {
                     }
                 }
 
-                if (code == KeyEvent.VK_RIGHT) {
+                if (code == KeyEvent.VK_D) {
                     gp.ui.commandNumLat++;
                     if(gp.ui.commandNumLat == 1) {
                         System.out.println("Sound On");
@@ -259,7 +268,12 @@ public class KeyHandler implements KeyListener {
             }
 
             if (code == KeyEvent.VK_ASTERISK) {
-                shotKeyPressed = true;
+                if (gp.player.getisMagician()==true){
+                    shotKeyPressed = true;
+                }
+                else{
+                    shotKeyPressed = false;
+                }
             }
 
             //SPEED SHIFT KEY
@@ -296,9 +310,10 @@ public class KeyHandler implements KeyListener {
                 }
             }
 
-            if (code==KeyEvent.VK_SPACE  && gp.player.collisionOn==true){
-                    gp.player.setblocked(true);
-                    System.out.println("blocked");
+            if (code == KeyEvent.VK_SPACE && (gp.player.collisionOn == true || gp.player.collision == true)
+                    && gp.player.invincible == false && gp.player.getisFighter() == true) {
+                gp.player.invincible = true;
+                System.out.println("blocked");
             }
             
             // This is the code which sets up the arrow keys on the keyboard to zoom in or out. Disabled since code is "iffy".
@@ -389,13 +404,11 @@ public class KeyHandler implements KeyListener {
             gp.player.selectItems();
             System.out.println("ENTER");
         }
-
-
     }
 
     public void gameOverState(int code) {
 
-        if(code == KeyEvent.VK_UP) {
+        if(code == KeyEvent.VK_Z) {
             gp.ui.commandNum--;
             if(gp.ui.commandNum < 0) {
                 gp.ui.commandNum = 1;
@@ -404,7 +417,7 @@ public class KeyHandler implements KeyListener {
         }
         
 
-        if(code == KeyEvent.VK_DOWN) {
+        if(code == KeyEvent.VK_S) {
             gp.ui.commandNum++;
             if(gp.ui.commandNum > 1) {
                 gp.ui.commandNum = 0;

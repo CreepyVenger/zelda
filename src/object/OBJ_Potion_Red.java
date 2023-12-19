@@ -1,11 +1,12 @@
 package object;
 
 import entity.Entity;
+import main.ConsumableItem;
 import main.GamePanel;
 import main.Inventory;
 import main.PickableItems;
 
-public class OBJ_Potion_Red extends Entity implements PickableItems{
+public class OBJ_Potion_Red extends Entity implements PickableItems,ConsumableItem{
 
     private String name;
     int value = 5;
@@ -44,4 +45,5 @@ public class OBJ_Potion_Red extends Entity implements PickableItems{
     }
     public String getname(){return this.name;}
     public String getdescription(){return this.description;}
+    public void consumeItem(Entity item){}
 }

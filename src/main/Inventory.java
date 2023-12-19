@@ -54,7 +54,7 @@ public class Inventory extends ArrayList<Entity>{
             this.inventory.set(indexitem,new EmptyItem(this.gp));
         }
         else {
-            System.out.println("Cannot delete non-exhistant item.");
+            System.out.println("Cannot delete non-existing item.");
         }
     }
     
@@ -72,4 +72,29 @@ public class Inventory extends ArrayList<Entity>{
         /*here, put code line that spawns the dropped item on the map*/
     }
     
+    public void moveItem(Entity item,Integer index){
+        if (index!=null && index<this.inventory.size()){
+            if (this.inventory.get(index) instanceof EmptyItem){
+                deleteItemIndex(indexofitem(item.getname()));
+                this.inventory.set(index,item);
+            }
+            else {
+                int currentItemIndex=indexofitem(item.getname());
+                Entity otherItem=this.inventory.get(index);
+                this.inventory.set(index,item);
+                this.inventory.set(currentItemIndex,otherItem);
+            }
+        }
+        else{
+            System.out.println("cannot performe this action.");
+        }
+    }
+
+    public void deleteAllItems(){
+        for (int i=0;i<this.inventory.size();i++){
+            if (!(this.inventory.get(i) instanceof EmptyItem)){
+                deleteItemIndex(i);
+            }
+        }
+    }
 }

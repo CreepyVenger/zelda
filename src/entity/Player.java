@@ -8,6 +8,11 @@ import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 //import java.io.IOException;
 
+import main.AttackItem;
+import main.ConsumableItem;
+import main.DefenseItem;
+import main.EmptyItem;
+
 //import javax.imageio.ImageIO;
 
 import main.GamePanel;
@@ -47,7 +52,6 @@ public class Player extends Entity {
     //public boolean attackCanceled = false; I DON'T KNOW WHAT THESE 2 LINES ARE, TO VERIFY
 
     public Inventory inventory = new Inventory(20);
-    
 
     public int hasKey = 0;
     int hasBoots = 0;
@@ -85,8 +89,6 @@ public class Player extends Entity {
         getPlayerGroundImage();
         getPlayerWaterImage();
         getPlayerAttackImage();
-        setItems(); 
-
     }
 
     /* private BufferedImage[] loadSpriteSheet(String path, int rows, int cols) {
@@ -187,23 +189,27 @@ public class Player extends Entity {
         invincible = false;
     }
 
-    public void setItems() {
-
+    public void setItemsFighter() {
+        gp.player.setisFighter(true);
         inventory.pickitem(currentWeapon);
         inventory.pickitem(currentShield);
-        //inventory.add(new OBJ_Key(gp));
-        //inventory.add(new OBJ_Key(gp));
-
-    } 
-
-    public int getAttack() {
-        
-        attackArea = currentWeapon.attackArea;
-        return attack = strength * currentWeapon.attackValue;
+    }
+    public void setItemsThief(){
+        gp.player.setisThief(true);
+        inventory.pickitem(currentWeapon);
+    }
+    public void setItemsWizard(){
+        gp.player.setisMagician(true);
     }
 
-    public int getDefense() {
-        return defense = dexterity * currentShield.defenseValue;
+    public Integer getAttack() {
+        
+        attackArea = currentWeapon.attackArea;
+        return attack = (int)strength * currentWeapon.attackValue;
+    }
+
+    public Integer getDefense() {
+        return defense = (int)dexterity * currentShield.defenseValue;
     }
 
     public void getPlayerGroundImage() {
@@ -435,7 +441,6 @@ public class Player extends Entity {
             if(invincibleCounter > 20) { //The damage method to the player when he hits a Green Slime gets called 60times/seconds (60frames per seconds or FPS)
                 invincible = false;
                 invincibleCounter = 0;
-                gp.player.setblocked(false);
             }
         }
 
@@ -446,11 +451,6 @@ public class Player extends Entity {
 
         if(life > maxLife) {
             life = maxLife;
-        }
-        
-        
-        if(gp.player.getblocked()==true){
-            gp.player.invincible=true;
         }
     }
     
@@ -517,7 +517,7 @@ public class Player extends Entity {
 
             if(gp.obj[i] instanceof PickableItems){
 
-                inventory.pickitem(gp.obj[i]);
+                gp.obj[i].pick(inventory);
                 gp.playSE(1);
                 text = "Found a " + gp.obj[i].getname() + "!";
             }
@@ -564,22 +564,24 @@ public class Player extends Entity {
                         System.out.println("Key: " + hasKey);
 
 
-                        i = 0;
+                        gp.monster[i] = new MON_GreenSlime(gp, null);
                         gp.monster[i].worldX = gp.tileSize*15;
                         gp.monster[i].worldY = gp.tileSize*26;
                         i++;
 
+                        gp.monster[i] = new MON_GreenSlime(gp, null);
                         gp.monster[i].worldX = gp.tileSize*12;
                         gp.monster[i].worldY = gp.tileSize*25;
                         i++;
-                        
+
+                        gp.monster[i] = new MON_GreenSlime(gp, null);
                         gp.monster[i].worldX = gp.tileSize*13;
                         gp.monster[i].worldY = gp.tileSize*27;
                         System.out.println("A slime Spawned!");
                         break;
                     }
 
-                    case "Door_Not_Spawnable":
+                case "Door_Not_Spawnable":
                     numdoors++;
                     if (hasKey > 0) {
                         gp.playSE(3);
@@ -655,11 +657,10 @@ public class Player extends Entity {
             if(invincible == false && gp.monster[i].dying == false) {
                 gp.playSE(6);
 
-                int damage = (gp.monster[i].attack / defense)+1;
+                int damage = (gp.monster[i].attack % defense)+1;
 
-                if(damage < 0){
-                    damage = 0;
-                }
+                life -= damage; //Previously it was 1
+                invincible = true;
 
                 System.out.println("damage that slime gives you is " + damage);
                 System.out.println("defense is " + defense);
@@ -667,9 +668,6 @@ public class Player extends Entity {
                 /* if(damage < 0) {
                     damage = 0;
                 } */
-
-                life -= damage; //Previously it was 1
-                invincible = true;
  
             }
         }
@@ -686,7 +684,7 @@ public class Player extends Entity {
                 gp.playSE(5);
 
                 int damage = attack - gp.monster[i].defense;
-                if(damage < 0) {
+                if(damage == 0) {
                     damage = 0;
                 }
 
@@ -776,21 +774,31 @@ public class Player extends Entity {
             
             Entity selectedItem = inventory.getInventory().get(itemIndex);
 
+            //This section is to make a mini menu to choose the next action for an item.
+            /*if (selectedItem instanceof AttackItem || selectedItem instanceof DefenseItem){
+                gp.ui.drawWeaponOptions();
+                System.out.println("weapon");
+            }
+            if (selectedItem instanceof ConsumableItem){
+                gp.ui.drawConsumableOptions();
+                System.out.println("consumable");
+            }
+            if ((!(selectedItem instanceof EmptyItem)) && (!(selectedItem instanceof ConsumableItem)) && (!(selectedItem instanceof AttackItem || selectedItem instanceof DefenseItem))){
+                gp.ui.drawElseOptions();
+                System.out.println("else");
+            }*/
             if(selectedItem.type == type_sword || selectedItem.type == type_axe ) {
-
                 currentWeapon = selectedItem;
                 attack = getAttack();
                 getPlayerAttackImage();
             }
 
             if(selectedItem.type == type_shield) {
-
                 currentShield = selectedItem;
                 defense = getDefense();
             }
 
             if(selectedItem.type == type_consumable) {
-
                 selectedItem.use(this);
                 inventory.deleteItemIndex(itemIndex);
             }

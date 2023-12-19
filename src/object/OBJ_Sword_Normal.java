@@ -1,11 +1,12 @@
 package object;
 
 import entity.Entity;
+import main.AttackItem;
 import main.GamePanel;
 import main.Inventory;
 import main.PickableItems;
 
-public class OBJ_Sword_Normal extends Entity implements PickableItems{
+public class OBJ_Sword_Normal extends Entity implements PickableItems,AttackItem{
 
     private String name;
 

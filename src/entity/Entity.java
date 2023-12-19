@@ -4,13 +4,13 @@ import java.awt.AlphaComposite;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
-import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
 import main.GamePanel;
+import main.Inventory;
 import main.UtilityTool;
 
 public class Entity {
@@ -67,10 +67,10 @@ public class Entity {
     public int mana;
 
     public int level;
-    public int strength;
-    public int dexterity;
-    public int attack;
-    public int defense;
+    public Integer strength;
+    public Integer dexterity;
+    public Integer attack;
+    public Integer defense;
     public int exp;
     public int nextLevelExp;
     public int coin;
@@ -104,9 +104,10 @@ public class Entity {
     //public boolean waterDetectionOn = false;
     //public boolean collisionOn;
 
-    //Private boolean for blocking (only for entities capable of blocking attacks)
-    private Boolean blocked=false;
-
+    //Variable which determines whether the player is a mage, a fighter, or a thief. If they are a mage, then they can use the fireball, otherwise, they cannot.
+    private Boolean isMagician=false;
+    private Boolean isFighter=false;
+    private Boolean isThief=false;
 
     public Entity(GamePanel gp) {
         this.gp = gp;
@@ -166,7 +167,7 @@ public class Entity {
                 //We can give damage
                 gp.playSE(6);
 
-                int damage = attack - gp.player.defense;
+                Integer damage = attack - gp.player.defense;
                 if(damage < 0) {
                     damage = 0;
                 }
@@ -350,6 +351,12 @@ public class Entity {
     public String getdescription(){return this.description;}
     public void attacking(Entity caster,Entity victim){}
     public void defending(Entity caster,Entity victim){}
-    public void setblocked(Boolean state){this.blocked=state;}
-    public Boolean getblocked(){return this.blocked;}
+    public void setisMagician(Boolean trueorfalse){this.isMagician=trueorfalse;}
+    public Boolean getisMagician(){return this.isMagician;}
+    public void setisFighter(Boolean trueorfalse){this.isFighter=trueorfalse;}
+    public Boolean getisFighter(){return this.isFighter;}
+    public void setisThief(Boolean trueorfalse){this.isThief=trueorfalse;}
+    public Boolean getisThief(){return this.isThief;}
+    public void pick(Inventory inventory){}
+    public void drop(Inventory inventory){}
 }

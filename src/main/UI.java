@@ -43,6 +43,9 @@ public class UI {
     public String currentDialogue = "";
     public int commandNum = 0;
     public int commandNumLat = 0; //lateral or horizontal selection
+    public boolean isAttackItem=false;
+    public boolean isDefenseItem=false;
+    public boolean isConsumableItem=false;
     public int titleScreenState = 0; //0: the first screen, 1: the second screen...
     //public int StettingsSoundState = 0; //0: sound on, 1:sound off //Eventually not needded
     public int slotCol = 0;
@@ -607,7 +610,7 @@ public class UI {
             }
 
         }
-
+    
     }
 
     public void drawPauseScreen() {
