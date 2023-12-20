@@ -221,6 +221,9 @@ public class UI {
         //For Treasure Hunting Game, un comment this whole paragraph to handle it 
 
         if(gameFinished == true) { 
+            
+            g2.setColor(new Color(0,0,0,150));
+            g2.fillRect(0, 0, gp.screenWidth, gp.screenHeight);
 
             g2.setFont(arial_40);
             g2.setColor(Color.WHITE);

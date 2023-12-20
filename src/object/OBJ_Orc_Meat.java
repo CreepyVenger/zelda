@@ -11,8 +11,8 @@ public class OBJ_Orc_Meat extends OBJ_Potion_Red{
     public OBJ_Orc_Meat(GamePanel gp){
         super(gp);
 
-        this.name="OBJ_Orc_Meat";
-        down1 = setupground("/objects/lantern", gp.tileSize, gp.tileSize);
+        this.name="Orc steak";
+        down1 = setupground("/objects/steak", gp.tileSize, gp.tileSize);
         description = "[" + this.name + "]\nconsume and heal your life by " + this.value;
         this.value=8;
 
