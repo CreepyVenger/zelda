@@ -19,7 +19,9 @@ import main.GamePanel;
 import main.Inventory;
 import main.KeyHandler;
 import main.PickableItems;
+import monster.MON_Bat;
 import monster.MON_GreenSlime;
+import monster.MON_RedSlime;
 import object.OBJ_Chest;
 import object.OBJ_Door;
 import object.OBJ_Fireball;
@@ -565,6 +567,10 @@ public class Player extends Entity {
                         System.out.println("Door opened: " + numdoors);
                         System.out.println("Key: " + hasKey);
 
+                        gp.monster[i] = new MON_RedSlime(gp, null);
+                        gp.monster[i].worldX = gp.tileSize*8;
+                        gp.monster[i].worldY = gp.tileSize*18;
+                        i++;
 
                         gp.monster[i] = new MON_GreenSlime(gp, null);
                         gp.monster[i].worldX = gp.tileSize*15;
