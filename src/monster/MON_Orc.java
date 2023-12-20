@@ -4,9 +4,14 @@ import java.util.Random;
 import entity.Entity;
 //import entity.Player;
 import main.GamePanel;
+import main.Inventory;
+import object.OBJ_Potion_Red;
 //import tile.Tile;
 //import main.UtilityTool;
 import tile.TileManager;
+
+import main.ConsumableItem;
+import main.PickableItems;
 
 public class MON_Orc extends Entity{
     
@@ -20,12 +25,12 @@ public class MON_Orc extends Entity{
 
         type = type_monster;
         name = "Orc";
-        speed = 2;
-        maxLife = 4;
+        speed = 0.5;
+        maxLife = 20;
         life = maxLife;
-        attack = 20;
+        attack = 10;
         defense = 0; //Player's default attack is 1 and if slime's defense is one os slime cannot take any damage
-        exp = 2;
+        exp = 10;
 
         solidArea.x = 3;
         solidArea.y = 18;
@@ -77,6 +82,7 @@ public class MON_Orc extends Entity{
         if(i > 75 && i <= 100) {
             direction = "right";        
         }
+
 
         actionLockCounter = 0;
     }

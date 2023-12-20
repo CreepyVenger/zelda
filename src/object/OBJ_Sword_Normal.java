@@ -18,7 +18,7 @@ public class OBJ_Sword_Normal extends Entity implements PickableItems,AttackItem
         type = type_sword;
         this.name = "Normal Sword";
         attackArea.width = 30;
-        attackArea.height = 30;
+        attackArea.height = 40;
         down1 = setupground("/objects/sword_normal_2", gp.tileSize, gp.tileSize);
         attackValue = 1;
         description = "[" + name + "]\nAnd old Sword.";

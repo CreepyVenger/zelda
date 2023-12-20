@@ -199,6 +199,27 @@ public class AssetSetter {
         gp.monster[i].worldY = gp.tileSize*42;
         i++;
 
+        gp.monster[i] = new MON_Orc(gp, null);
+        gp.monster[i].worldX = gp.tileSize*38;
+        gp.monster[i].worldY = gp.tileSize*8;
+        i++;
+
+        gp.monster[i] = new MON_Orc(gp, null);
+        gp.monster[i].worldX = gp.tileSize*36;
+        gp.monster[i].worldY = gp.tileSize*30;
+        i++;
+
+        gp.monster[i] = new MON_Bat(gp, null);
+        gp.monster[i].worldX = gp.tileSize*10;
+        gp.monster[i].worldY = gp.tileSize*13;
+        i++;
+
+        gp.monster[i] = new MON_Bat(gp, null);
+        gp.monster[i].worldX = gp.tileSize*12;
+        gp.monster[i].worldY = gp.tileSize*16;
+        i++;
+
+
         /* //Green Slime in the tower to test collision 
         gp.monster[2] = new MON_GreenSlime(gp);
         gp.monster[2].worldX = gp.tileSize*11;

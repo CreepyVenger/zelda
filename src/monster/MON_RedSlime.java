@@ -20,10 +20,10 @@ public class MON_RedSlime extends Entity{
 
         type = type_monster;
         name = "red Slime";
-        speed = 2;
-        maxLife = 4;
+        speed = 1;
+        maxLife = 10;
         life = maxLife;
-        attack = 1;
+        attack = 4;
         defense = 0; //Player's default attack is 1 and if slime's defense is one os slime cannot take any damage
         exp = 2;
 
