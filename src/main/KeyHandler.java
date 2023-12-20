@@ -90,16 +90,16 @@ public class KeyHandler implements KeyListener {
                         //gp.playMusic(0); //not necessary
                     }
 
-                    if(gp.ui.commandNum == 1) {
+                    /*if(gp.ui.commandNum == 1) {
                         //CODE LOADING GAME LOGIC LATER
                     }
 
                     if(gp.ui.commandNum == 2) {
                         //Settings window 
                         gp.ui.titleScreenState = 2;
-                    }
+                    }*/
 
-                    if(gp.ui.commandNum == 3) {
+                    if(gp.ui.commandNum == 1) {
                         System.out.println("Quitting Game start"); 
                         System.exit(0);
                         System.out.println("Quitting Game finish"); 

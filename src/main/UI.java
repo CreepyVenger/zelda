@@ -420,28 +420,28 @@ public class UI {
                 g2.drawString(">", x - gp.tileSize, y);
             }
 
-            text = "Load game";
+            /*text = "Load game";
             x = getXforCenteredText(text);
             y += gp.tileSize; //Why doesn't it gets displayed if tileSize*4 ?
             g2.drawString(text, x, y);
             if(commandNum == 1) {
                 g2.drawString(">", x - gp.tileSize, y);
-            }
+            }*/
 
-            text = "Settings";
+            /*text = "Settings";
             x = getXforCenteredText(text);
             y += gp.tileSize; //Why doesn't it gets displayed if tileSize*4 ?
             g2.drawString(text, x, y);
-            if(commandNum == 2) {
+            if(commandNum == 1) {
                 g2.drawString(">", x - gp.tileSize, y);
-            }
+            }*/
 
             
             text = "Quit Game";
             x = getXforCenteredText(text);
             y += gp.tileSize; //Why doesn't it gets displayed if tileSize*4 ?
             g2.drawString(text, x, y);
-            if(commandNum == 3) {
+            if(commandNum == 1) {
                 g2.drawString(">", x - gp.tileSize, y);
             }
 
