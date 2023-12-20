@@ -27,6 +27,7 @@ import monster.MON_RedSlime;
 import object.OBJ_Chest;
 import object.OBJ_Door;
 import object.OBJ_Fireball;
+import object.OBJ_Orc_Meat;
 import object.OBJ_Potion_Red;
 //import object.OBJ_Key;
 import object.OBJ_Shield_Wood;
@@ -207,6 +208,7 @@ public class Player extends Entity {
     
     public void setItemsWizard(){
         gp.player.setisMagician(true);
+        inventory.pickitem(currentShield);
     }
 
     public Integer getAttack() {
@@ -360,7 +362,8 @@ public class Player extends Entity {
             attacking();
         }
         
-        else if (keyH.upPressed == true || keyH.downPressed == true || keyH.leftPressed == true || keyH.rightPressed == true || keyH.enterPressed == true) {
+        else if (keyH.upPressed == true || keyH.downPressed == true || keyH.leftPressed == true
+                || keyH.rightPressed == true || keyH.enterPressed == true) {
 
             if (keyH.upPressed == true) {
                 direction = "up";
@@ -716,10 +719,10 @@ public class Player extends Entity {
                         Random random = new Random();
                         int rng  = random.nextInt(100)+1;
 
-                        if (rng <= 50) {
-                            Entity redpotion=new OBJ_Potion_Red(gp);
-                            redpotion.pick(gp.player.inventory);
-                            System.out.println("The Orc dropped a potion");
+                        if (rng <= 100) {
+                            Entity orcsteak=new OBJ_Orc_Meat(gp);
+                            orcsteak.pick(gp.player.inventory);
+                            System.out.println("The Orc dropped a piece of meat");
                         }
                     }
 
