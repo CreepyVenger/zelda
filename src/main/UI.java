@@ -146,9 +146,9 @@ public class UI {
             
 
             //TIME DISPLAY
-            /* playTime +=(double)1/60; //x+=1 means x = x+1 so here it's playTime = playTime + (double)1/60
+            playTime +=(double)1/60; //x+=1 means x = x+1 so here it's playTime = playTime + (double)1/60
             g2.drawString("Time:"+ dFormat.format(playTime), gp.tileSize*11, 65);
-            y += gp.tileSize/2-10; */
+            y += gp.tileSize/2-10;
             
             //MESSAGE (WHAT TF IS THIS????)
             /* if(messageOn == true) {
@@ -175,9 +175,7 @@ public class UI {
             g2.setFont(g2.getFont().deriveFont(Font.PLAIN,48F));
             g2.setColor(Color.WHITE);
             //g2.drawImage(keyImage, gp.tileSize/2, gp.tileSize/2, gp.tileSize, gp.tileSize, null); 
-            g2.drawString("|  Keys: x " + gp.player.hasKey, 220, y); // Initially, x=72, y=65
-            //x += gp.tileSize-50;
-            y += gp.tileSize/2-10;
+            
 
             //TIME
             //playTime +=(double)1/60; //x+=1 means x = x+1 so here it's playTime = playTime + (double)1/60

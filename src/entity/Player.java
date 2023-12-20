@@ -194,10 +194,12 @@ public class Player extends Entity {
         inventory.pickitem(currentWeapon);
         inventory.pickitem(currentShield);
     }
+    
     public void setItemsThief(){
         gp.player.setisThief(true);
         inventory.pickitem(currentWeapon);
     }
+    
     public void setItemsWizard(){
         gp.player.setisMagician(true);
     }

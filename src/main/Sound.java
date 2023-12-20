@@ -25,10 +25,11 @@ public class Sound {
         soundURL[5] = getClass().getResource("/sound/hitmonster.wav");
         soundURL[6] = getClass().getResource("/sound/receivedamage.wav");
         soundURL[7] = getClass().getResource("/sound/swingweapon.wav");
-        soundURL[8] = getClass().getResource("/sound/levelup.wav");
+        soundURL[8] = getClass().getResource("/sound/level_up.wav");
         soundURL[9] = getClass().getResource("/sound/cursor.wav");
         soundURL[10] = getClass().getResource("/sound/brulez2.wav");
         soundURL[11] = getClass().getResource("/sound/gameover.wav");
+        soundURL[12] = getClass().getResource("/sound/sancho 3.wav");
 
 
     }
