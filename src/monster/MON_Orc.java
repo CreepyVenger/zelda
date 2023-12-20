@@ -4,14 +4,11 @@ import java.util.Random;
 import entity.Entity;
 //import entity.Player;
 import main.GamePanel;
-import main.Inventory;
 import object.OBJ_Potion_Red;
 //import tile.Tile;
 //import main.UtilityTool;
 import tile.TileManager;
-
-import main.ConsumableItem;
-import main.PickableItems;
+import main.Inventory;
 
 public class MON_Orc extends Entity{
     

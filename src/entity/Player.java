@@ -1,5 +1,7 @@
 package entity;
 
+import java.util.Random;
+
 import java.awt.AlphaComposite;
 import java.awt.Color;
 import java.awt.Font;
@@ -25,6 +27,7 @@ import monster.MON_RedSlime;
 import object.OBJ_Chest;
 import object.OBJ_Door;
 import object.OBJ_Fireball;
+import object.OBJ_Potion_Red;
 //import object.OBJ_Key;
 import object.OBJ_Shield_Wood;
 import object.OBJ_Sword_Normal;
@@ -708,6 +711,18 @@ public class Player extends Entity {
                     gp.monster[i].dying = true;
                     System.out.println("invicible");
                     gp.ui.addMessage("Killed the" + gp.monster[i].name + "!");
+
+                    if (gp.monster[i].name == "Orc") {
+                        Random random = new Random();
+                        int rng  = random.nextInt(100)+1;
+
+                        if (rng <= 50) {
+                            Entity redpotion=new OBJ_Potion_Red(gp);
+                            redpotion.pick(gp.player.inventory);
+                            System.out.println("The Orc dropped a potion");
+                        }
+                    }
+
                     System.out.println("KILLED");
                     gp.ui.addMessage("Exp" + gp.monster[i].exp);
                     exp += gp.monster[i].exp;
