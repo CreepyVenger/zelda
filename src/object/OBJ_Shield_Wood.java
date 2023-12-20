@@ -22,12 +22,8 @@ public class OBJ_Shield_Wood extends Entity implements PickableItems,DefenseItem
         description = "[" + name + "]\nMade of wood.";
     }
 
-    public void pick(Inventory inventory){
-        inventory.pickitem(new OBJ_Shield_Wood(gp));
-    }
-    public void drop(Inventory inventory){
-        inventory.dropitem(this.name);
-    }
+    public void pick(Inventory inventory){inventory.pickitem(this);}
+    public void drop(Inventory inventory){inventory.dropitem(this.name);}
     public String getname(){return this.name;}
     public String getdescription(){return this.description;}
     public void blocking(Entity caster,Entity target){}

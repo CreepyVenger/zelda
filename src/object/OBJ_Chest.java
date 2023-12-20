@@ -19,9 +19,7 @@ public class OBJ_Chest extends Entity{
 
         collision = true;
     }
-    public Inventory getiInventory(){
-        return this.chestinventory;
-    }
+    public Inventory getiInventory(){return this.chestinventory;}
     public String getname(){return this.name;}
     public String getdescription(){return this.description;}
 }

@@ -7,6 +7,7 @@ import main.GamePanel;
 public class OBJ_Door extends Entity{
     
     private String name;
+    private String description;
 
     public OBJ_Door(GamePanel gp) {
 

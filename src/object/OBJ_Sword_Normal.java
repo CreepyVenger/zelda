@@ -24,12 +24,8 @@ public class OBJ_Sword_Normal extends Entity implements PickableItems,AttackItem
         description = "[" + name + "]\nAnd old Sword.";
     }
 
-    public void pick(Inventory inventory){
-        inventory.pickitem(new OBJ_Sword_Normal(gp));
-    }
-    public void drop(Inventory inventory){
-        inventory.dropitem(this.name);
-    }
+    public void pick(Inventory inventory){inventory.pickitem(this);}
+    public void drop(Inventory inventory){inventory.dropitem(this.name);}
     public String getname(){return this.name;}
     public String getdescription(){return this.description;}
     public void attacking(Entity caster,Entity victim){}

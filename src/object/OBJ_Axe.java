@@ -23,12 +23,8 @@ public class OBJ_Axe extends Entity implements PickableItems,AttackItem{
         description = "[" + name + "]\nA bit rusty but still can cut \nsome trees..."; 
     }
 
-    public void pick(Inventory inventory){
-        inventory.pickitem(new OBJ_Axe(gp));
-    }
-    public void drop(Inventory inventory){
-        inventory.dropitem(this.name);
-    }
+    public void pick(Inventory inventory){inventory.pickitem(this);}
+    public void drop(Inventory inventory){inventory.dropitem(this.name);}
     public String getname(){return this.name;}
     public String getdescription(){return this.description;}
     public void attacking(Entity caster,Entity target){

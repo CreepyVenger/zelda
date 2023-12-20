@@ -26,9 +26,9 @@ public class OBJ_Potion_Red extends Entity implements PickableItems,ConsumableIt
     public void use(Entity entity) {
 
         gp.gameState = gp.dialogueState;
-        gp.ui.currentDialogue = "You drank the " + name + "!\n" + "Your life has now been restored by " + value;
+        gp.ui.currentDialogue = "You drank the " + this.name + "!\n" + "Your life has now been restored by " + this.value;
 
-        entity.life += value;
+        entity.life += this.value;
         
         if(gp.player.life > gp.player.maxLife) {
             gp.player.life = gp.player.maxLife;
@@ -37,12 +37,8 @@ public class OBJ_Potion_Red extends Entity implements PickableItems,ConsumableIt
         gp.playSE(2);
 
     }   
-    public void pick(Inventory inventory){
-        inventory.pickitem(new OBJ_Potion_Red(gp));
-    }
-    public void drop(Inventory inventory){
-        inventory.dropitem(this.name);
-    }
+    public void pick(Inventory inventory){inventory.pickitem(this);}
+    public void drop(Inventory inventory){inventory.dropitem(this.name);}
     public String getname(){return this.name;}
     public String getdescription(){return this.description;}
     public void consumeItem(Entity item){}
