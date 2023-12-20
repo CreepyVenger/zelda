@@ -88,7 +88,18 @@ public class MON_GreenSlime extends Entity{
 public void damageReaction(){
 
     actionLockCounter = 0;
-    direction = gp.player.direction;
+    if (gp.player.direction == "up") {
+        direction = "down";
+    }
+    else if (gp.player.direction == "down") {
+        direction = "up";
+    }
+    else if (gp.player.direction == "right") {
+        direction = "left";
+    }
+    else {
+        direction = "right";
+    }
 }
 
 

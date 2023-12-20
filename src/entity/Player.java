@@ -719,7 +719,7 @@ public class Player extends Entity {
                         Random random = new Random();
                         int rng  = random.nextInt(100)+1;
 
-                        if (rng <= 100) {
+                        if (rng <= 50) {
                             Entity orcsteak=new OBJ_Orc_Meat(gp);
                             orcsteak.pick(gp.player.inventory);
                             System.out.println("The Orc dropped a piece of meat");
