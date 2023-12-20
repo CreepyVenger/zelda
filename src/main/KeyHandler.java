@@ -279,7 +279,7 @@ public class KeyHandler implements KeyListener {
             //SPEED SHIFT KEY
             if(code == KeyEvent.VK_SHIFT) {   
                 shiftSpeed = true;         
-                gp.player.speedGround = 15;  
+                gp.player.speedGround = 6;  
                 System.out.println("Shift speed!"); 
             }
 
