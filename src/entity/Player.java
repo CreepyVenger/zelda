@@ -208,6 +208,7 @@ public class Player extends Entity {
     
     public void setItemsWizard(){
         gp.player.setisMagician(true);
+        inventory.pickitem(currentWeapon);
         inventory.pickitem(currentShield);
     }
 
