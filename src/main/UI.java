@@ -389,7 +389,7 @@ public class UI {
 
             //TITLE NAME
             g2.setFont(g2.getFont().deriveFont(Font.BOLD,96F));
-            String text = "Sagitta Viridis";
+            String text = "Gladius, The sword";
             int x = getXforCenteredText(text);
             int y = gp.tileSize*2;
 
