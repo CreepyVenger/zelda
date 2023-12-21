@@ -190,7 +190,6 @@ public class Player extends Entity {
     }
 
     public void restoreLife() {
-
         life = maxLife;
         invincible = false;
     }
@@ -672,7 +671,13 @@ public class Player extends Entity {
             if(invincible == false && gp.monster[i].dying == false) {
                 gp.playSE(6);
 
-                int damage = (gp.monster[i].attack % defense)+1;
+                int damage;
+                if (gp.player.defense>0){
+                    damage = (gp.monster[i].attack % defense)+1;
+                }
+                else{
+                    damage=gp.player.maxLife;
+                }
 
                 life -= damage; //Previously it was 1
                 invincible = true;

@@ -229,5 +229,9 @@ public class AssetSetter {
         gp.monster[3].worldX = gp.tileSize*11;
         gp.monster[3].worldY = gp.tileSize*11; */ 
     }
-
+    public void deleteAllMonsters(){
+        for (int i=0;i<gp.monster.length;i++){
+            gp.monster[i]=null;
+        }
+    }
 }

@@ -71,13 +71,13 @@ public class KeyHandler implements KeyListener {
                 if (code == KeyEvent.VK_Z) {
                     gp.ui.commandNum--;
                     if(gp.ui.commandNum < 0) {
-                        gp.ui.commandNum = 3;
+                        gp.ui.commandNum = 1;
                     }
                 }
 
                 if (code == KeyEvent.VK_S) {
                     gp.ui.commandNum++;
-                    if(gp.ui.commandNum > 3) {
+                    if(gp.ui.commandNum > 1) {
                         gp.ui.commandNum = 0;
                     }
                 }
@@ -130,6 +130,7 @@ public class KeyHandler implements KeyListener {
                         System.out.println("Do some fighter specific stuff!");
                         gp.gameState = gp.playState;
                         gp.player.setItemsFighter();
+                        gp.player.strength=2;
                         gp.player.getAttack();
                         gp.player.getDefense();
                         gp.playMusic(0);
@@ -139,6 +140,8 @@ public class KeyHandler implements KeyListener {
                         System.out.println("Do some thief specific stuff!");
                         gp.gameState = gp.playState;
                         gp.player.setItemsThief();
+                        gp.player.strength=5;
+                        gp.player.dexterity=0;
                         gp.player.getAttack();
                         gp.player.getDefense();
                         gp.playMusic(0);
