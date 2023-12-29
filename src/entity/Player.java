@@ -64,6 +64,10 @@ public class Player extends Entity {
     int numdoors = 0;
     
     private boolean onWater = false;
+
+    //This variable is to know whether or not the spacebar(blocking key) has been pressed.
+    private Boolean blockpressed=false;
+    int blockcounter=0;
     
     public Player(GamePanel gp, KeyHandler keyH, TileManager tileManager) {
         
@@ -462,6 +466,20 @@ public class Player extends Entity {
         if(life > maxLife) {
             life = maxLife;
         }
+
+        if (getBlockedPressed()==true){
+            if (blockcounter<30 && gp.player.getisThief()==true){
+                if (blockcounter<15 && (collisionOn==true ||collision==true) && invincible==false){
+                    invincible=true;
+                    System.out.println("attack blocked");
+                }
+                blockcounter++;
+            }
+            if (blockcounter>=30){
+                    this.blockpressed=false;
+                    blockcounter=0;
+            }
+        }
     }
     
     public void attacking() {
@@ -765,10 +783,20 @@ public class Player extends Entity {
             gp.monster[i].attack = gp.monster[i].attack;
 
             //exp = exp - nextLevelExp;
-            nextLevelExp = exp * 1; //2 initially
+            nextLevelExp = exp * 2; //2 initially
             //maxLife += 2;
-            strength++;
-            dexterity++;
+            if (getisThief()==true){
+                strength=strength*2;
+            }
+            else{
+                strength++;
+            }
+            if (getisFighter()){
+                dexterity++;
+            }
+            else{
+                dexterity=0;
+            }
             //gp.monster[i].attack++;
             //gp.player.defense = gp.player.defense*2;
             attack = getAttack(); 
@@ -982,4 +1010,6 @@ public class Player extends Entity {
         }
     }
 
+    public Boolean getBlockedPressed(){return this.blockpressed;}
+    public void setcounterpressed(Boolean true_or_false){this.blockpressed=true_or_false;}
 }   

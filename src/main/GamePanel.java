@@ -128,6 +128,9 @@ public class GamePanel extends JPanel implements Runnable {
     public void retry() {
         player.inventory.deleteAllItems();
         aSetter.deleteAllMonsters();
+        player.setisFighter(false);
+        player.setisMagician(false);
+        player.setisThief(false);
         player.hasKey=0;
         ui.playTime=0;
         gameState = titleState;

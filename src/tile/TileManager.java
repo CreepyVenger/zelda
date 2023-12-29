@@ -33,13 +33,7 @@ public class TileManager {
         getTileImage();
         loadMap("/maps/WorldV2.txt");
 
-    }   
-    
-
-
-    /* public static TileManager getTileManager() {
-        return tileManager;
-    } */
+    }
 
     public Tile getTileAtPosition(double x, double y) {
         int col = (int) (x / gp.tileSize);
@@ -52,14 +46,6 @@ public class TileManager {
 
         return null;
     }
-
-    /* public boolean isWaterTile(int x, int y) {
-        if (x >= 0 && x < gp.maxWorldCol && y >= 0 && y < gp.maxWorldRow) {
-            int tileNum = mapTileNum[x][y];
-            return tile[tileNum].isWater();
-        }
-        return false;
-    } */
 
     public void getTileImage() {
         System.out.println("Image loading started");
@@ -153,99 +139,9 @@ public class TileManager {
         setup(41, "tree3", true, false); //Up left corner
         setup(42, "image3x33", false, false); //DIRT
         setup(43, "rock", false, false);
-    
-        /* setup(41, "image7x17", false, false); //Up right corner
-        setup(42, "image7x18", false, false); //bottom right corner
-        setup(43, "image7x18", false, false); //bottom left corner is 9x18
-        setup(44, "image8x19", false, false); //right
-        setup(45, "image6x20", false, false); //down
-        setup(46, "image7x19", false, false); //left
-        setup(47, "image6x19", false, false); //up */   
-        //setup(48, "image6x19", true, false); //center
         
         System.out.println("Image loading finished");
     }
-
-
-
-/* public void getTileImage() {
-
-    try {
-
-        setup(0, "grass2", false);
-        setup(1, "wall2", false);
-        setup(2, "water2", false);
-        setup(3, "earth", false);
-        setup(4, "tree2-variant2", false);
-        setup(5, "sand2", false);
-
-        tile[0] = new Tile();
-        tile[0].image = ImageIO.read(getClass().getResourceAsStream("/tiles/grass2.png"));
-        //tile[0].index = 0;
-        
-        BufferedImage scaledImage = new BufferedImage(gp.tileSize, gp.tileSize, tile[0].image.getType());
-        Graphics2D g2 = scaledImage.createGraphics();
-        g2.drawImage(tile[0].image, 0, 0, gp.tileSize, gp.tileSize, null);
-        tile[0].image = scaledImage;
-
-        tile[1] = new Tile();
-        tile[1].image = ImageIO.read(getClass().getResourceAsStream("/tiles/wall2.png"));
-        tile[1].collision = true;
-        //tile[1].index = 0;
-
-        tile[2] = new Tile();
-        tile[2].image = ImageIO.read(getClass().getResourceAsStream("/tiles/water2.png"));
-        tile[2].collision = false;
-        //tile[2].index = 0;
-        //tile[2].waterDetection = true;
-        //tile[2].setWater(true);
-        tile[2].isWater = true;
-
-        tile[3] = new Tile();
-        tile[3].image = ImageIO.read(getClass().getResourceAsStream("/tiles/earth.png"));
-        //tile[3].index = 0;
-        
-        tile[4] = new Tile();
-        tile[4].image = ImageIO.read(getClass().getResourceAsStream("/tiles/tree2-variant2.png"));
-        tile[4].collision = true;
-        //tile[4].index = 0;
-        
-
-        tile[5] = new Tile();
-        tile[5].image = ImageIO.read(getClass().getResourceAsStream("/tiles/sand2.png")); 
-        //tile[5].index = 0;*/
-
-        /* tile[0] = new Tile();
-        tile[0].image = ImageIO.read(getClass().getResourceAsStream("/tiles/earth.png"));
-
-        tile[1] = new Tile();
-        tile[1].image = ImageIO.read(getClass().getResourceAsStream("/tiles/grass.png"));
-        
-        tile[2] = new Tile();
-        tile[2].image = ImageIO.read(getClass().getResourceAsStream("/tiles/sand.png"));
-        
-        tile[3] = new Tile();
-        tile[3].image = ImageIO.read(getClass().getResourceAsStream("/tiles/tree.png"));
-        tile[3].collision = true;
-
-        tile[4] = new Tile();
-        tile[4].image = ImageIO.read(getClass().getResourceAsStream("/tiles/wall.png"));
-        tile[4].collision = true;
-
-
-        tile[5] = new Tile();
-        tile[5].image = ImageIO.read(getClass().getResourceAsStream("/tiles/water.png"));
-        tile[5].collision = true;
-
-
-        tile[6] = new Tile();
-        tile[6].image = ImageIO.read(getClass().getResourceAsStream("/tiles/rock.png"));
-        tile[6].collision = true; */
-
-    /* } catch (IOException e) {
-        e.printStackTrace();
-    }
-} */ 
 
     public void setup(int index, String imagePath, boolean collision, boolean isWater) {
 
@@ -263,25 +159,6 @@ public class TileManager {
         }
         
     }
-
-    /* public Tile setup(int index, String imagePath, boolean collision, boolean isWater) {
-
-        UtilityTool uTool = new UtilityTool();
-    
-        try {
-            Tile newTile = new Tile();
-            newTile.image = ImageIO.read(getClass().getResourceAsStream("/tiles/new/" + imagePath + ".png"));
-            newTile.image = uTool.scaleImage(newTile.image, gp.tileSize, gp.tileSize);
-            newTile.collision = collision;
-            newTile.isWater = isWater;
-            tile[index] = newTile; // Add the new tile to the tile array at the specified index; this line is apparently not in the tutorial's code and I asked ChatGPT for help
-            return newTile;
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    
-        return null;
-    } */
     
 
     public void loadMap(String filePath) {
@@ -328,10 +205,6 @@ public class TileManager {
 
     public void draw(Graphics2D g2) {
 
-        /* g2.drawImage(tile[0].image, 0, 0, gp.tileSize, gp.tileSize, null);
-        g2.drawImage(tile[1].image, 48, 0, gp.tileSize, gp.tileSize, null);
-        g2.drawImage(tile[2].image, 96, 0, gp.tileSize, gp.tileSize, null); */
-
         int worldCol = 0;
         int worldRow = 0;
 
@@ -366,12 +239,6 @@ public class TileManager {
                 worldCol = 0;
                 worldRow++;
             }
-
-            /* if (tile[tileNum].isWater()) {
-            // Draw water tile specific logic
-            } else {
-            // Draw other tiles
-            } */
         }
     }
 }

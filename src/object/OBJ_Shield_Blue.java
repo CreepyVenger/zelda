@@ -17,7 +17,7 @@ public class OBJ_Shield_Blue extends Entity implements PickableItems,DefenseItem
         type = type_shield;
         this.name = "Blue Shield";
         down1 = setupground("/objects/shield_iron", gp.tileSize, gp.tileSize);
-        defenseValue = 1;
+        defenseValue = 5;
         description = "[" + name + "]\nShiny blue blue shield.";
     }
 

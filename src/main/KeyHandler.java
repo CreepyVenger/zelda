@@ -140,7 +140,7 @@ public class KeyHandler implements KeyListener {
                         System.out.println("Do some thief specific stuff!");
                         gp.gameState = gp.playState;
                         gp.player.setItemsThief();
-                        gp.player.strength=5;
+                        gp.player.strength=2;
                         gp.player.dexterity=0;
                         gp.player.getAttack();
                         gp.player.getDefense();
@@ -151,6 +151,7 @@ public class KeyHandler implements KeyListener {
                         System.out.println("Do some witcher specific stuff!");
 
                         gp.gameState = gp.playState;
+                        gp.player.dexterity=0;
                         gp.player.setItemsWizard();
                         gp.player.getAttack();
                         gp.player.getDefense();
@@ -313,10 +314,10 @@ public class KeyHandler implements KeyListener {
                 }
             }
 
-            if (code == KeyEvent.VK_SPACE && (gp.player.collisionOn == true || gp.player.collision == true)
-                    && gp.player.invincible == false && gp.player.getisFighter() == true) {
-                gp.player.invincible = true;
-                System.out.println("blocked");
+            if (code == KeyEvent.VK_SPACE){
+                System.out.println("space_pressed");
+                gp.player.setcounterpressed(true);
+                gp.player.update();
             }
             
             // This is the code which sets up the arrow keys on the keyboard to zoom in or out. Disabled since code is "iffy".
